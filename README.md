@@ -1,5 +1,7 @@
 # samhalls-experterna
-
+```
+Glöm inte att installera vue router och vuex via npm!
+```
 ## Project setup
 ```
 npm install
