@@ -1,32 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="nav"> <!--Här är vår globala header-->
+      <router-link to="/hem">Hem</router-link> |
+      <router-link to="/om">Om oss</router-link> |
+      <router-link to="/artiklar">Artiklar</router-link> |
+      <router-link to="/sok">Sök</router-link>
     </div>
     <router-view/>
+    <div id="footer">
+      <!--Här är vår globala footer-->
+    </div>
   </div>
 </template>
 
 <style>
-#app {
+/*Global styling*/
+*{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
