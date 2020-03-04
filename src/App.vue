@@ -57,11 +57,7 @@
 </style>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
-
+/* 
 #app {
   display: grid;
   grid-template-columns: auto;
@@ -77,7 +73,7 @@
   display: block;
   background-color: rgba(196, 196, 196, 1);
   height: 50px;
-}
+} */
 
 .footerright {
   display: grid;
