@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="row no-gutters">
       <img class="logo col-1" src="https://picsum.photos/200/300">
-        <div class="col d-flex justify-content-center"><Span><router-link to="/hem"><h1>Xpert</h1></router-link></Span></div>
+        <div class="col mb-0 d-flex justify-content-center"><Span><router-link to="/hem"><h1>Xpert</h1></router-link></Span></div>
       <div v-on:click="isHidden = !isHidden" class="col-1 d-flex justify-content-end"><a href="#"><img src="./assets/load-btn.svg" class="nav-btn"></a></div>
     </div>
     <!-- Submenu -->
@@ -24,10 +24,10 @@
       <!--Här är vår globala footer-->
         <ul class="mb-0 p-3 list-unstyled">
           <li>
-            <a href=""><i class="pr-3 fas fa-book"></i>IT-Högskolan</a>
+            <a href="https://www.iths.se/"><i class="pr-3 fas fa-book"></i>IT-Högskolan</a>
           </li>
           <li>
-            <a href=""><i class="pr-3 fab fa-facebook-f"></i>ITHS-Facebook</a>
+            <a href="https://www.facebook.com/ITHogskolan"><i class="pr-3 fab fa-facebook-f"></i>ITHS-Facebook</a>
           </li>
           <li>
             <router-link to="/tos"><i class="pr-3 fas fa-file-alt"></i>Terms of Services</router-link>
