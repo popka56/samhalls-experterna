@@ -8,7 +8,7 @@
             <a href="https://placeholder.com"><img class="img-responsive card-img" src="https://via.placeholder.com/300"></a>
           </div>
           <div class="col-md-7 col-sm-12 my-col top-buffer">
-            <h4 class="mb-1">Oscar Fredriksson</h4>
+            <h4 class="mb-1">Förnamn Efternamn</h4>
             <p class="text-muted card-text">Suspendisse varius lorem ac arcu volutpat faucibus. Phasellus nunc . Aenean tincidunt eget turpis id dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas urna diam, commodo tristique interdum vulputate, consequat sit amet metus. Suspendisse congue aliquet metus vitae fringilla. Nam mollis urna nec gravida varius. Nunc vehicula fermentum turpis, a varius est molestie ut. Aenean erat eros, semper eget vestibulum ac, elementum quis nulla. </p>
           </div>
         </div>

@@ -15,6 +15,7 @@
       <router-link to="/sok">Sök</router-link> |
       <router-link to="/profil">Profil</router-link> |
       <router-link to="/tOS">Terms of Services</router-link> |
+      <router-link to="/login">Logga in</router-link> |
     </div>
     <div class="router-view">
     <router-view/>

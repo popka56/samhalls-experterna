@@ -6,6 +6,8 @@ import Artikel from '../components/Artikel.vue'
 import Artiklar from '../components/Artiklar.vue'
 import Profil from '../components/Profil.vue'
 import Sok from '../components/Sok.vue'
+import Login from '../components/Login.vue'
+
 
 Vue.use(VueRouter)
 
@@ -43,6 +45,11 @@ const routes = [
     path: '/sok',
     name: 'Sök',
     component: Sok
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
 ]
 
