@@ -13,7 +13,8 @@
       <router-link to="/artiklar">Artiklar</router-link> |
       <router-link to="/yrke">Yrke</router-link> |
       <router-link to="/sok">Sök</router-link> |
-      <router-link to="/profil">Profil</router-link>
+      <router-link to="/profil">Profil</router-link> |
+      <router-link to="/tOS">Terms of Services</router-link> |
     </div>
     <div class="router-view">
     <router-view/>
@@ -22,15 +23,15 @@
     <footer>
     <div class="footerright">
       <!--Här är vår globala footer-->
-        <ul class="mb-0">
+        <ul class="mb-0 p-3 list-unstyled">
           <li>
-            <a href="">Lorem-right</a>
+            <a href=""><i class="fas fa-book"></i>IT-Högskolan</a>
           </li>
           <li>
-            <a href="">Lorem-right</a>
+            <a href=""><i class="fab fa-facebook-f"></i>ITHS-Facebook</a>
           </li>
           <li>
-            <a href="">Lorem-right</a>
+            <a href="">Adress: </a>
           </li>
           <li>
             <a href="">Lorem-right</a>
@@ -53,6 +54,7 @@ export default {
 </script>
 <style>
 /*Global styling*/
+
 *{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -61,6 +63,12 @@ export default {
 </style>
 
 <style scoped>
+
+li > a{
+  color: black;
+  font-size: 20px;
+}
+
 span > h1 {
   color: #FFDB68;
 }
