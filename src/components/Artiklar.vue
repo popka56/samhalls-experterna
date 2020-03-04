@@ -1,6 +1,6 @@
 <template>
   <div id="articles">
-    <!--Här gör vi en for loop ex: "article in articles"-->
+    <!--Här gör vi en for loop, ex: "article in articles"-->
     <div class="article">
       <div>
         <img src="https://picsum.photos/200/300">
