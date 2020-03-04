@@ -14,7 +14,6 @@
       <router-link to="/yrke">Yrke</router-link> |
       <router-link to="/sok">Sök</router-link> |
       <router-link to="/profil">Profil</router-link> |
-      <router-link to="/tos">Terms of Services</router-link> |
     </div>
     <div class="router-view">
     <router-view/>
@@ -25,16 +24,16 @@
       <!--Här är vår globala footer-->
         <ul class="mb-0 p-3 list-unstyled">
           <li>
-            <a href=""><i class="fas fa-book"></i>IT-Högskolan</a>
+            <a href=""><i class="pr-3 fas fa-book"></i>IT-Högskolan</a>
           </li>
           <li>
-            <a href=""><i class="fab fa-facebook-f"></i>ITHS-Facebook</a>
+            <a href=""><i class="pr-3 fab fa-facebook-f"></i>ITHS-Facebook</a>
           </li>
           <li>
-            <a href="">Adress: </a>
+            <router-link to="/tos"><i class="pr-3 fas fa-file-alt"></i>Terms of Services</router-link>
           </li>
           <li>
-            <a href="">Lorem-right</a>
+            <a href=""><i class="pr-3 fas fa-map-pin"></i>Ebbe Lieberathsgatan 18 c</a>
           </li>
         </ul>
     </div>
@@ -68,7 +67,6 @@ li > a{
   color: black;
   font-size: 20px;
 }
-
 span > h1 {
   color: #FFDB68;
 }
