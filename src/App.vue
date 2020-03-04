@@ -14,7 +14,7 @@
       <router-link to="/yrke">Yrke</router-link> |
       <router-link to="/sok">Sök</router-link> |
       <router-link to="/profil">Profil</router-link> |
-      <router-link to="/tOS">Terms of Services</router-link> |
+      <router-link to="/tos">Terms of Services</router-link> |
     </div>
     <div class="router-view">
     <router-view/>
