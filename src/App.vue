@@ -4,7 +4,8 @@
       <router-link to="/hem">Hem</router-link> |
       <router-link to="/om">Om oss</router-link> |
       <router-link to="/artiklar">Artiklar</router-link> |
-      <router-link to="/sok">Sök</router-link>
+      <router-link to="/sok">Sök</router-link> |
+      <router-link to="/profil">Profil</router-link>
     </div>
     <router-view/>
     <div id="footer">
