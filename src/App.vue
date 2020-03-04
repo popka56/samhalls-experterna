@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <!-- Header -->
-    <div class="row no-gutters">
-      <img class="logo col-1" src="https://picsum.photos/200/300">
+    <header>
+      <div class="row no-gutters">
+        <img class="logo col-1" src="https://picsum.photos/200/300">
         <div class="col mb-0 d-flex justify-content-center"><Span><router-link to="/hem"><h1>Xpert</h1></router-link></Span></div>
-      <div v-on:click="isHidden = !isHidden" class="col-1 d-flex justify-content-end"><a href="#"><img src="./assets/load-btn.svg" class="nav-btn"></a></div>
-    </div>
+        <div id="hej" v-on:click="isHidden = !isHidden" class="col-1 d-flex justify-content-end"><a href="#"><img src="./assets/load-btn.svg" class="nav-btn"></a></div>
+      </div>
+    </header>
     <!-- Submenu -->
     <div id="nav" v-show="!isHidden"> <!--Här är vår globala header-->
       <router-link to="/hem">Hem</router-link> |
@@ -13,7 +15,7 @@
       <router-link to="/artiklar">Artiklar</router-link> |
       <router-link to="/yrke">Yrke</router-link> |
       <router-link to="/sok">Sök</router-link> |
-      <router-link to="/profil">Profil</router-link> |
+      <router-link to="/profil">Profil</router-link>
     </div>
     <div class="router-view">
     <router-view/>
@@ -80,6 +82,9 @@ span > h1 {
   height: 50px;
 }
 
+header{
+  background-color:#c0c0c0;
+}
 
 footer {
   background-color:#c0c0c0;
