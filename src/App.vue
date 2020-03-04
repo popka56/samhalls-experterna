@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div class="row">
+    <div class="row no-gutters">
       <img class="logo" src="https://picsum.photos/200/300">
-      <Span>Xpert</Span>
+      <div class="col-sm-11"><Span>Xpert</Span></div>
      <a href="index.html"><img src="./assets/load-btn.svg" class="nav-btn"></a>
      </div>
     <div id="nav"> <!--Här är vår globala header-->
@@ -65,10 +65,16 @@
 
 <style scoped>
 
+.nav-btn {
+  width: 25px;
+  height: 25px;
+}
+
 .logo {
   width: 150px;
   height: 50px;
 }
+
 
 footer {
   background-color:#c0c0c0;
