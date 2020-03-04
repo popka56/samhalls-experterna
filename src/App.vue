@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="header">
+    <div class="row">
       <img class="logo" src="https://picsum.photos/200/300">
       <Span>Xpert</Span>
      <a href="index.html"><img src="./assets/load-btn.svg" class="nav-btn"></a>
@@ -65,13 +65,9 @@
 
 <style scoped>
 
-.header {
-  display: grid;
-}
-
 .logo {
-  width: auto;
-  height: 100px;
+  width: 150px;
+  height: 50px;
 }
 
 footer {
