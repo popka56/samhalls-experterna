@@ -7,7 +7,7 @@
      <a href="index.html"><img src="./assets/load-btn.svg" class="nav-btn"></a>
      </div>
      </div>
-    <div id="nav"> <!--Här är vår globala header-->
+    <div id="nav" style="display: block;"> <!--Här är vår globala header-->
       <router-link to="/hem">Hem</router-link> |
       <router-link to="/om">Om oss</router-link> |
       <router-link to="/artiklar">Artiklar</router-link> |
@@ -37,22 +37,6 @@
           </li>
         </ul>
     </div>
-    <!-- <div class="footerleft">
-        <ul>
-          <li>
-            <a href="">Lorem-left</a>
-          </li>
-          <li>
-            <a href="">Lorem-left</a>
-          </li>
-          <li>
-            <a href="">Lorem-left</a>
-          </li>
-          <li>
-            <a href="">Lorem-left</a>
-          </li>
-        </ul>
-    </div>   -->
     </footer>
   </div>
 </template>
