@@ -1,6 +1,7 @@
 <template>
   <div>
     <!--Din html här-->
+    <h1>Hej</h1>
   </div>
 </template>
 
