@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Hem from '../components/Hem.vue'
 import Yrke from '../components/Yrke.vue'
 import Artikel from '../components/Artikel.vue'
+import Artiklar from '../components/Artiklar.vue'
 import Profil from '../components/Profil.vue'
 import Sok from '../components/Sok.vue'
 
@@ -24,6 +25,11 @@ const routes = [
     path: '/artikel',
     name: 'Artikel',
     component: Artikel
+  },
+  {
+    path: '/artiklar',
+    name: 'Artiklar',
+    component: Artiklar
   },
   {
     path: '/profil',
