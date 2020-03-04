@@ -1,34 +1,43 @@
 <template>
   <div id="app">
-      <img class="logo" src="https://picsum.photos/200/300">
+    <div class="row no-gutters">
+      <img class="logo col-1" src="https://picsum.photos/200/300">
+      <div class="col d-flex justify-content-center"><Span><router-link to="/hem"><h1>Xpert</h1></router-link></Span></div>
+      <div class="col-1 d-flex justify-content-end">
      <a href="index.html"><img src="./assets/load-btn.svg" class="nav-btn"></a>
+     </div>
+     </div>
     <div id="nav"> <!--Här är vår globala header-->
       <router-link to="/hem">Hem</router-link> |
       <router-link to="/om">Om oss</router-link> |
       <router-link to="/artiklar">Artiklar</router-link> |
+      <router-link to="/yrke">Yrke</router-link> |
       <router-link to="/sok">Sök</router-link> |
-      <router-link to="/profil">Profil</router-link> |
+      <router-link to="/profil">Profil</router-link>
     </div>
+    <div class="router-view">
     <router-view/>
+    </div>
     <!-- Footer -->
+    <footer>
     <div class="footerright">
       <!--Här är vår globala footer-->
         <ul>
           <li>
-            <a href="">Lorem-left</a>
+            <a href="">Lorem-right</a>
           </li>
           <li>
-            <a href="">Lorem-left</a>
+            <a href="">Lorem-right</a>
           </li>
           <li>
-            <a href="">Lorem-left</a>
+            <a href="">Lorem-right</a>
           </li>
           <li>
-            <a href="">Lorem-left</a>
+            <a href="">Lorem-right</a>
           </li>
         </ul>
     </div>
-    <div class="footerleft">
+    <!-- <div class="footerleft">
         <ul>
           <li>
             <a href="">Lorem-left</a>
@@ -43,7 +52,8 @@
             <a href="">Lorem-left</a>
           </li>
         </ul>
-    </div>  
+    </div>   -->
+    </footer>
   </div>
 </template>
 
@@ -57,54 +67,23 @@
 </style>
 
 <style scoped>
-/* 
-#app {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto 100%;
-  grid-template-areas:
-    "logo nav-btn"
-    "nav nav"
-    "fl fr";
+span > h1 {
+  color: #FFDB68;
 }
-
-#nav {
-  grid-area: nav;
-  display: block;
-  background-color: rgba(196, 196, 196, 1);
-  height: 50px;
-} */
-
-.footerright {
-  display: grid;
-  grid-area: fr;
-}
-
-.footerleft {
-  display: grid;
-  grid-area: fl;
-
+.nav-btn {
+  width: 25px;
+  height: 25px;
 }
 
 .logo {
-  grid-area: logo;
+  width: 150px;
   height: 50px;
-  width: 100px;
 }
 
-.nav-btn {
-  display: grid;
-  grid-area: nav-btn;
-  transform: rotate(90deg);
-}
 
-.nav-btn > img {
-  display: grid;
-  grid-area: nav-btn;
-  transform: rotate(90deg);
+footer {
+  background-color:#c0c0c0;
+  padding: 0;
+  margin: 0;
 }
-
- #app {
-   background-color: rgba(229, 229, 229, 1);
- }
 </style>
