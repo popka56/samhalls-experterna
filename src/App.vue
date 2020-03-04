@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <div class="row no-gutters">
-      <img class="logo" src="https://picsum.photos/200/300">
-      <div class="col-sm-11"><Span>Xpert</Span></div>
+      <img class="logo col-1" src="https://picsum.photos/200/300">
+      <div class="col d-flex justify-content-center"><Span><h1>Xpert</h1></Span></div>
+      <div class="col-1 d-flex justify-content-end">
      <a href="index.html"><img src="./assets/load-btn.svg" class="nav-btn"></a>
+     </div>
      </div>
     <div id="nav"> <!--Här är vår globala header-->
       <router-link to="/hem">Hem</router-link> |
@@ -64,7 +66,9 @@
 </style>
 
 <style scoped>
-
+span > h1 {
+  color: #FFDB68;
+}
 .nav-btn {
   width: 25px;
   height: 25px;
