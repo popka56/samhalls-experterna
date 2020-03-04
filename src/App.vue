@@ -2,7 +2,7 @@
   <div id="app">
     <div class="row no-gutters">
       <img class="logo col-1" src="https://picsum.photos/200/300">
-      <div class="col d-flex justify-content-center"><Span><h1>Xpert</h1></Span></div>
+      <div class="col d-flex justify-content-center"><Span><router-link to="/hem"><h1>Xpert</h1></router-link></Span></div>
       <div class="col-1 d-flex justify-content-end">
      <a href="index.html"><img src="./assets/load-btn.svg" class="nav-btn"></a>
      </div>
@@ -11,8 +11,9 @@
       <router-link to="/hem">Hem</router-link> |
       <router-link to="/om">Om oss</router-link> |
       <router-link to="/artiklar">Artiklar</router-link> |
+      <router-link to="/yrke">Yrke</router-link> |
       <router-link to="/sok">Sök</router-link> |
-      <router-link to="/profil">Profil</router-link> |
+      <router-link to="/profil">Profil</router-link>
     </div>
     <div class="router-view">
     <router-view/>
