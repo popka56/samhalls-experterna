@@ -3,7 +3,7 @@
     <!--Här gör vi en for loop ex: "article in articles"-->
     <div class="article">
       <div>
-        <img>
+        <img src="https://picsum.photos/200/300">
       </div>
       <div>
         <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
@@ -15,7 +15,7 @@
     </div>
     <div class="article">
       <div>
-        <img>
+        <img src="https://picsum.photos/200/300">
       </div>
       <div>
         <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
@@ -27,7 +27,7 @@
     </div>
     <div class="article">
       <div>
-        <img>
+        <img src="https://picsum.photos/200/300">
       </div>
       <div>
         <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
@@ -39,7 +39,7 @@
     </div>
     <div class="article">
       <div>
-        <img>
+        <img src="https://picsum.photos/200/300">
       </div>
       <div>
         <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
@@ -51,7 +51,7 @@
     </div>
     <div class="article">
       <div>
-        <img>
+        <img src="https://picsum.photos/200/300">
       </div>
       <div>
         <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
