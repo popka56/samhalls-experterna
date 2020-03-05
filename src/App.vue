@@ -35,7 +35,7 @@
             <router-link to="/tos"><i class="pr-3 fas fa-file-alt"></i>Terms of Services</router-link>
           </li>
           <li>
-            <a href=""><i class="pr-3 fas fa-map-pin"></i>Ebbe Lieberathsgatan 18 c</a>
+            <a href="https://www.google.com/maps/place/Ebbe+Lieberathsgatan+18C,+412+65+G%C3%B6teborg/@57.6794723,11.99917,17z/data=!3m1!4b1!4m5!3m4!1s0x464ff3ba575254c9:0x1026ff48d864454e!8m2!3d57.6794723!4d12.0013587"><i class="pr-3 fas fa-map-pin"></i>Ebbe Lieberathsgatan 18 c</a>
           </li>
         </ul>
     </div>
