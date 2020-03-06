@@ -11,7 +11,8 @@
     </header>
     <!-- Submenu -->
     <div id="nav" v-show="!isHidden"> <!--Här är vår globala header-->
-    <div class="d-flex justify-items-around">
+    <!--  Texten centreras inte ordentligt? -->
+    <div class="col d-flex justify-content-around">
       <router-link to="/hem">Hem</router-link> |
       <!-- <router-link to="/om">Om oss</router-link> | -->
       <router-link to="/artiklar">Artiklar</router-link> |
