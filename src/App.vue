@@ -89,6 +89,10 @@ i {
   font-size: 2rem !important;
   color: white;
 }
+
+li > a {
+  color: whitesmoke !important;
+  }
 </style>
 
 <style scoped>
