@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  //Din javascript här
+  //Din javascript här 
 }
 </script>
 
