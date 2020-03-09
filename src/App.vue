@@ -6,25 +6,27 @@
         <!-- Logotyp -->
         <!-- <img class="logo col-0" src="https://picsum.photos/200/300"> -->
         <div class="col mb-0 d-flex justify-content-center"><Span><router-link to="/hem"><h1 class="text-white">Xpert</h1></router-link></Span></div>
-        <div v-on:click="isHidden = !isHidden" class="col-1 d-flex align-items-center justify-content-around"><a href="#"><img src="./assets/load-btn.svg" class="nav-btn" style="transform: rotate(90deg);"></a></div>
+        <div v-on:click="isHidden = !isHidden" class="col-1 d-flex align-items-center justify-content-around"><a href="#"><i id="ham-btn" class="fas fa-bars"></i></a></div>
       </div>
     </header>
     <!-- Submenu -->
     <div id="nav" v-show="!isHidden"> <!--Här är vår globala header-->
     <!--  Texten centreras inte ordentligt? -->
-    <div class="col d-flex justify-content-around">
-      <router-link to="/hem">Hem</router-link> |
-      <!-- <router-link to="/om">Om oss</router-link> | -->
-      <router-link to="/artiklar">Artiklar</router-link> |
-      <router-link to="/yrke">Yrke</router-link> |
-      <!-- <router-link to="/sok">Sök</router-link> | -->
-      <router-link to="/profil">Profil</router-link>
+      <div id="menu-items" class="col d-flex justify-content-around">
+        <router-link to="/hem"><a>Hem</a></router-link> |
+        <!-- <router-link to="/om">Om oss</router-link> | -->
+        <router-link to="/artiklar">Artiklar</router-link> |
+        <router-link to="/yrke">Yrke</router-link> |
+        <!-- <router-link to="/sok">Sök</router-link> | -->
+        <router-link to="/profil">Profil</router-link>
+      </div>
     </div>
-    </div>
+
     <div class="router-view">
     <router-view/>
     </div>
     <!-- Footer -->
+    Footer texten ska vara vita.
     <footer>
     <div class="footerright">
       <!--Här är vår globala footer-->
@@ -64,6 +66,28 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#nav {
+  background-color: #69c9d6;
+}
+
+#menu-items a:hover {
+  text-decoration: none !important;
+  color: whitesmoke;
+}
+#menu-items > a{
+  text-decoration: none !important;
+  color: whitesmoke !important;
+}
+#menu-items{
+  text-decoration: none !important;
+  color: whitesmoke !important;
+}
+
+i {
+  font-size: 2rem !important;
+  color: white;
 }
 </style>
 
