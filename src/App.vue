@@ -26,10 +26,23 @@
     <router-view/>
     </div>
     <!-- Footer -->
-    Footer texten ska vara vita.
     <footer>
-    <div class="footerright">
+    <div class="d-flex justify-content-center">
       <!--Här är vår globala footer-->
+        <ul class="mb-0 p-3 list-unstyled">
+          <li>
+            <a href="https://www.iths.se/"><i class="pr-3 fas fa-book"></i>IT-Högskolan</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/ITHogskolan"><i class="pr-3 fab fa-facebook-f"></i>ITHS-Facebook</a>
+          </li>
+          <li>
+            <router-link to="/tos"><i class="pr-3 fas fa-file-alt"></i>Terms of Services</router-link>
+          </li>
+          <li>
+            <a href="https://www.google.com/maps/place/Ebbe+Lieberathsgatan+18C,+412+65+G%C3%B6teborg/@57.6794723,11.99917,17z/data=!3m1!4b1!4m5!3m4!1s0x464ff3ba575254c9:0x1026ff48d864454e!8m2!3d57.6794723!4d12.0013587"><i class="pr-3 fas fa-map-pin"></i>Ebbe Lieberathsgatan 18 c</a>
+          </li>
+        </ul>
         <ul class="mb-0 p-3 list-unstyled">
           <li>
             <a href="https://www.iths.se/"><i class="pr-3 fas fa-book"></i>IT-Högskolan</a>
@@ -48,7 +61,6 @@
     </footer>
   </div>
 </template>
-
 <script>
 export default {
   data: function() {
