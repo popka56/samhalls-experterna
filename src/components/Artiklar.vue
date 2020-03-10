@@ -1,66 +1,84 @@
 <template>
-  <div id="articles">
+  <div class="d-flex flex-row flex-wrap justify-content-center">
     <!--Här gör vi en for loop, ex: "article in articles"-->
-    <div class="article">
+    <div id="article" class="d-flex flex-row">
       <div>
-        <img src="https://picsum.photos/200/300">
+        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
-        <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27</h3>
+        <h3>Författare: John Doe | </h3>
+        <h3>Yrkeskategori: IT | </h3>
+        <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
     </div>
-    <div class="article">
+    <div id="article" class="d-flex flex-row">
       <div>
-        <img src="https://picsum.photos/200/300">
+        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
-        <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27</h3>
+        <h3>Författare: John Doe | </h3>
+        <h3>Yrkeskategori: IT | </h3>
+        <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-    </div>
-    <div class="article">
+    </div>  
+    <div id="article" class="d-flex flex-row">
       <div>
-        <img src="https://picsum.photos/200/300">
+        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
-        <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27</h3>
+        <h3>Författare: John Doe | </h3>
+        <h3>Yrkeskategori: IT | </h3>
+        <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-    </div>
-    <div class="article">
+    </div>  
+    <div id="article" class="d-flex flex-row">
       <div>
-        <img src="https://picsum.photos/200/300">
+        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
-        <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27</h3>
+        <h3>Författare: John Doe | </h3>
+        <h3>Yrkeskategori: IT | </h3>
+        <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-    </div>
-    <div class="article">
+    </div>  
+    <div id="article" class="d-flex flex-row">
       <div>
-        <img src="https://picsum.photos/200/300">
+        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
-        <h2><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27</h3>
+        <h3>Författare: John Doe | </h3>
+        <h3>Yrkeskategori: IT | </h3>
+        <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-    </div>    
+    </div>  
+    <div id="article" class="d-flex flex-row">
+      <div>
+        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
+      </div>
+      <div>
+        <h3>Författare: John Doe | </h3>
+        <h3>Yrkeskategori: IT | </h3>
+        <h3>Datum: 2020-02-27</h3>
+        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
+          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+          dolore magna aliqua...</p>
+      </div>
+    </div>  
   </div>
 </template>
 
@@ -71,30 +89,25 @@ export default {
 </script>
 
 <style scoped>
-#articles{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.article{
-  display: flex;
-  flex-direction: row;
-  width: 40vw;
-  padding: 20px;
+#article{
+  max-width: 40vw;
 }
 
-.article img{
-  width: 100px;
-  height: 100px;
-  padding: 10px;
-}
-
-.article h2{
-  font-size: 20px;
-}
-
-.article h3{
+#article h3{
+  display: inline;
   font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  #article{
+    display: column;
+    max-width: 98%;
+    padding: 1%;
+  }
+
+  #article h3{
+    display: block;
+  }
 }
 
 </style>
