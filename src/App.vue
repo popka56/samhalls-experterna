@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <!-- Header -->
-    <div class="row no-gutters">
-      <img class="logo col-1" src="https://picsum.photos/200/300">
-        <div class="col d-flex justify-content-center"><Span><router-link to="/hem"><h1>Xpert</h1></router-link></Span></div>
-      <div v-on:click="isHidden = !isHidden" class="col-1 d-flex justify-content-end"><a href="#"><img src="./assets/load-btn.svg" class="nav-btn"></a></div>
-    </div>
+    <header>
+      <div class="row no-gutters">
+        <img class="logo col-1" src="https://picsum.photos/200/300">
+        <div class="col mb-0 d-flex justify-content-center"><Span><router-link to="/hem"><h1>Xpert</h1></router-link></Span></div>
+        <div id="hej" v-on:click="isHidden = !isHidden" class="col-1 d-flex justify-content-end"><a href="#"><img src="./assets/load-btn.svg" class="nav-btn"></a></div>
+      </div>
+    </header>
     <!-- Submenu -->
     <div id="nav" v-show="!isHidden"> <!--Här är vår globala header-->
       <router-link to="/hem">Hem</router-link> |
@@ -16,6 +18,7 @@
       <router-link to="/profil">Profil</router-link> |
       <router-link to="/tOS">Terms of Services</router-link> |
       <router-link to="/login">Logga in</router-link> |
+      <router-link to="/profil">Profil</router-link>
     </div>
     <div class="router-view">
     <router-view/>
@@ -26,16 +29,16 @@
       <!--Här är vår globala footer-->
         <ul class="mb-0 p-3 list-unstyled">
           <li>
-            <a href=""><i class="fas fa-book"></i>IT-Högskolan</a>
+            <a href="https://www.iths.se/"><i class="pr-3 fas fa-book"></i>IT-Högskolan</a>
           </li>
           <li>
-            <a href=""><i class="fab fa-facebook-f"></i>ITHS-Facebook</a>
+            <a href="https://www.facebook.com/ITHogskolan"><i class="pr-3 fab fa-facebook-f"></i>ITHS-Facebook</a>
           </li>
           <li>
-            <a href="">Adress: </a>
+            <router-link to="/tos"><i class="pr-3 fas fa-file-alt"></i>Terms of Services</router-link>
           </li>
           <li>
-            <a href="">Lorem-right</a>
+            <a href=""><i class="pr-3 fas fa-map-pin"></i>Ebbe Lieberathsgatan 18 c</a>
           </li>
         </ul>
     </div>
@@ -69,7 +72,6 @@ li > a{
   color: black;
   font-size: 20px;
 }
-
 span > h1 {
   color: #FFDB68;
 }
@@ -83,6 +85,9 @@ span > h1 {
   height: 50px;
 }
 
+header{
+  background-color:#c0c0c0;
+}
 
 footer {
   background-color:#c0c0c0;

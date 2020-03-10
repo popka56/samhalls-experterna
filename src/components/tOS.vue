@@ -1,14 +1,10 @@
 <template>
-  <div id="tOS">
+  <div id="tos">
     <h1>Website Terms and Conditions of Use</h1>
 
 <h2>1. Terms</h2>
 
 <p>By accessing this Website, accessible from https://xpert.se, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trade mark law. These Terms of Service has been created with the help of the <a href="https://www.termsofservicegenerator.net">Terms of Service Generator</a> and the <a href="https://www.termsconditionsexample.com">Terms & Conditions Example</a>.</p>
-
-<h2>2. Use License</h2>
-
-<p>Permission is granted to temporarily download one copy of the materials on Xpert AB's Website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
 
 <ul>
     <li>modify or copy the materials;</li>

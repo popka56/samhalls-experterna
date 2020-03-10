@@ -7,7 +7,7 @@ import Artiklar from '../components/Artiklar.vue'
 import Profil from '../components/Profil.vue'
 import Sok from '../components/Sok.vue'
 import Login from '../components/Login.vue'
-
+import Tos from '../components/Tos.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +15,11 @@ const routes = [
   {
     path: '/',
     redirect: '/hem'
+  },
+  {
+    path: '/tos',
+    name: 'Tos',
+    component: Tos
   },
   {
     path: '/hem',
