@@ -1,5 +1,5 @@
 <template>
-  <div id="tos">
+  <div id="tos" class="container">
     <h1>Website Terms and Conditions of Use</h1>
 
 <h2>1. Terms</h2>
@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  //Din javascript här
+  //Din javascript här 
 }
 </script>
 

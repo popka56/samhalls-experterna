@@ -1,16 +1,18 @@
 <template>
-  <div id="article">
-    <div id="content">
-      <h2>Lorem ipsum</h2>
-      <h3>Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27 | Senast ändrad: 2020-02-28</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Malesuada proin libero nunc consequat interdum. Lectus urna duis convallis convallis tellus. Vitae sapien pellentesque habitant 
-        morbi tristique senectus et. Quisque non tellus orci ac auctor. Purus semper eget duis at tellus at urna. Suspendisse sed nisi 
-        lacus sed viverra. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Egestas diam in arcu cursus euismod quis 
-        viverra. Lectus sit amet est placerat in egestas erat imperdiet sed. Auctor urna nunc id cursus metus aliquam eleifend mi. 
-        Elementum sagittis vitae et leo. Consequat ac felis donec et odio. Pharetra sit amet aliquam id diam. Id aliquet lectus proin 
-        nibh nisl condimentum id venenatis. Aliquam ultrices sagittis orci a scelerisque purus semper eget duis. Viverra maecenas 
-        accumsan lacus vel facilisis volutpat. Scelerisque viverra mauris in aliquam sem fringilla ut morbi.<br><br>
+  <div class="container">
+    <!--Artikelns Content-->
+    <div class="row" id="content">
+      <h2 class="col-md-8 col-sm-12 my-col">Lorem ipsum</h2>
+      <h3 class="col-md-8 col-sm-12 my-col">Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27 | Senast ändrad: 2020-02-28</h3>
+      <p class="col-md-8 col-sm-12 my-col">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+        ut labore et dolore magna aliqua. Malesuada proin libero nunc consequat interdum. Lectus urna duis convallis convallis tellus. 
+        Vitae sapien pellentesque habitant morbi tristique senectus et. Quisque non tellus orci ac auctor. Purus semper eget duis at 
+        tellus at urna. Suspendisse sed nisi lacus sed viverra. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. 
+        Egestas diam in arcu cursus euismod quis viverra. Lectus sit amet est placerat in egestas erat imperdiet sed. Auctor urna nunc 
+        id cursus metus aliquam eleifend mi. Elementum sagittis vitae et leo. Consequat ac felis donec et odio. Pharetra sit amet 
+        aliquam id diam. Id aliquet lectus proin nibh nisl condimentum id venenatis. Aliquam ultrices sagittis orci a scelerisque 
+        purus semper eget duis. Viverra maecenas accumsan lacus vel facilisis volutpat. Scelerisque viverra mauris in aliquam sem 
+        fringilla ut morbi.<br><br>
 
         Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Tellus mauris a diam maecenas sed. Nulla at volutpat 
         diam ut venenatis tellus in metus vulputate. Duis tristique sollicitudin nibh sit amet. Amet consectetur adipiscing elit duis 
@@ -42,8 +44,34 @@
         tristique. Convallis tellus id interdum velit laoreet id donec. Neque laoreet suspendisse interdum consectetur libero id faucibus. 
         Porttitor lacus luctus accumsan tortor posuere. Sed turpis tincidunt id aliquet risus feugiat.<br><br>
       </p>
+      <!--Sidebar-->
+      <div class="card bg-light col-md-3 col-sm-12 my-col align-self-start offset-1" id="sidebar">
+        <div id="introduktion">
+          <h4 class="card-title">Lorem ipsum</h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>  
+          <table id="introduktion-table">
+            <tr>
+              <th>Arbetsplats:</th>
+            </tr>
+            <tr>
+              <td>CGI</td>
+            </tr>
+            <tr>
+              <th>Utbildning:</th>
+            </tr>
+            <tr>
+              <td>Webbutveckling</td>
+            </tr>
+          </table> 
+        </div>
+      </div>
     </div>
-    <div id="sources">
+    <!--Källor-->
+    <div class="row" id="sources">
       <h3>Källor:</h3>
       <ol>
         <li>Collins, Donald, Diane Catlett, and Bobbie Collins. Libraries and Research: A Practical Approach, 3rd ed. Dubuque. IA: Kendall/Hunt Publishing Company, 1994.</li>
@@ -63,9 +91,12 @@ export default {
 </script>
 
 <style scoped>
-#article{
-  /*Detta är bara för att se hur det kanske ser ut sedan med vår sidebar. Ta bort när den finns!*/
-  margin-right: 25vw;
+#introduktion {
+  padding: 10px;
+}
+#introduktion-table {
+  table-layout: fixed;
+  width: 100%;
 }
 
 #content h2{
@@ -76,10 +107,6 @@ export default {
     font-size: 14px;
     padding: 5px;
     text-align: center;
-}
-
-#content p{
-  padding: 20px;
 }
 
 #sources{

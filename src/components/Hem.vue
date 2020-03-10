@@ -108,7 +108,7 @@
         <h2 class="pl-4 pt-4">Mest Populära Artiklar</h2>
       </div>
       <!--Loop här!-->
-            <div class="article">
+      <div class="article">
       <div>
         <img>
       </div>
@@ -120,7 +120,7 @@
           dolore magna aliqua...</p>
       </div>
       </div>
-            <div class="article">
+      <div class="article">
       <div>
         <img>
       </div>
@@ -132,7 +132,7 @@
           dolore magna aliqua...</p>
       </div>
       </div>
-            <div class="article">
+      <div class="article">
       <div>
         <img>
       </div>
@@ -144,7 +144,7 @@
           dolore magna aliqua...</p>
       </div>
       </div>
-            <div class="article">
+      <div class="article">
       <div>
         <img>
       </div>
@@ -157,7 +157,38 @@
       </div>
       </div>
     </div>
-
+    <!--Yrkeskategorier-->
+    <div class="w-100">
+      <h2 class="pl-4 pt-4">Artiklar Efter Yrke</h2>
+    </div>
+    <div class="container">
+      <div id="card-links" class="card-columns">
+        <div class="card-body text-center" style="width: 18rem;">
+          <h2 id="card-text" class="card-text">IT</h2>
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
+        </div>
+        <div class="card-body text-center" style="width: 18rem;">
+          <h2 id="card-text" class="card-text">IT</h2>
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
+        </div>
+        <div class="card-body text-center" style="width: 18rem;">
+          <h2 id="card-text" class="card-text">IT</h2>
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
+        </div>
+        <div class="card-body text-center" style="width: 18rem;">
+          <h2 id="card-text" class="card-text">IT</h2>
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
+        </div>
+        <div class="card-body text-center" style="width: 18rem;">
+          <h2 id="card-text" class="card-text">IT</h2>
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
+        </div>
+        <div class="card-body text-center" style="width: 18rem;">
+          <h2 id="card-text" class="card-text">IT</h2>
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -229,6 +260,14 @@ export default {
 
 .article h3{
   font-size: 14px;
+}
+
+#card-text{
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  position: absolute;
+  padding-left: 3.5em;
+  padding-top: 1.8em;
 }
 
 </style>
