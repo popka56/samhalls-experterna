@@ -130,6 +130,10 @@ header{
   background-color:#7AE2F0;
 }
 
+header a:hover{
+  text-decoration: none !important;
+}
+
 footer {
   background-color:#F0BA7A;
   color: white;
