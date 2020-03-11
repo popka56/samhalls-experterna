@@ -102,14 +102,14 @@ i {
   color: white;
 }
 
-li > a {
+footer li > a {
   color: whitesmoke !important;
   }
 </style>
 
 <style scoped>
 
-li > a{
+footer li > a{
   color: black;
   font-size: 20px;
 }

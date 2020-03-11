@@ -2,12 +2,20 @@
   <div class="container">
     <div class="row top-buffer"></div>
     <div class="row no-gutters">
-      <div class="card bg-light col-md-8 col-sm-12 my-col">
+      <div class="bg-light col-md-8 col-sm-12 my-col">
         <div class="row">
           <div class="col-md-4 col-sm-12 my-col">
-            <a href="https://placeholder.com"><img class="img-responsive card-img" src="https://via.placeholder.com/300"></a>
+            
+            <a href="https://placeholder.com"><img class="img-responsive img-fluid 	d-none d-md-block d-lg-block d-xl-block" src="https://via.placeholder.com/300"></a>
+            
+            <div class="d-md-none d-lg-none float profile-img-small">
+              <div class="d-flex justify-content-center">
+                <a href="https://placeholder.com"><img class="img-thumbnail rounded-circle" id="profile-img" src="https://via.placeholder.com/300"></a>
+              </div>
+            </div>
+          
           </div>
-          <div class="col-md-7 col-sm-12 my-col top-buffer">
+          <div class="col-md-7 col-sm-12 my-col pt-2">
             <h4 class="mb-1">Förnamn Efternamn</h4>
             <p class="text-muted card-text">Suspendisse varius lorem ac arcu volutpat faucibus. Phasellus nunc . Aenean tincidunt eget turpis id dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas urna diam, commodo tristique interdum vulputate, consequat sit amet metus. Suspendisse congue aliquet metus vitae fringilla. Nam mollis urna nec gravida varius. Nunc vehicula fermentum turpis, a varius est molestie ut. Aenean erat eros, semper eget vestibulum ac, elementum quis nulla. </p>
           </div>
@@ -120,17 +128,27 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Fråga</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form>
+          <div class="form-group">
+            <label class="mb-0" for="exampleFormControlInput1">Din mail</label>
+            <p class="text-muted mb-0">Om du vill bli notifierad vid svar</p>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="namn@example.com">
+            <div class="form-group mt-1">
+              <label for="exampleFormControlTextarea1">Ställ din fråga</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Stäng</button>
+        <button type="button" class="btn btn-primary">Skicka</button>
       </div>
     </div>
   </div>
@@ -179,11 +197,15 @@ export default {
   box-shadow: 50px 10px 100px rgba(0, 0, 0, 0.20);
   /* background-color: gray; */
 }
-#sidebar {
-  /* padding: 10px; */
-}
 #introduktion {
   padding: 10px;
+}
+#profile-img {
+  max-width: 150px;
+}
+.profile-img-small {
+  position: relative;
+  bottom: 50%;
 }
 #introduktion-table {
   table-layout: fixed;
