@@ -1,16 +1,29 @@
 const express = require('express');
 const cors = require('cors');
 const sqlite = require('sqlite');
+const moment = require('moment');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+//Egna värden att använda till våra anrop
 
+//Formatera moment att vara svensk
+moment.locale('sv');
+//Använd currentDate för att få ut dagens datum
+let currentDate = moment().format('L');
+
+
+//Importera databasen
 let database;
 
 sqlite.open('databas.sqlite').then(data => {
     database = data;
+})
+
+app.get('/date', (request, response) => {
+        response.send(currentDate);
 })
 
 //GET anrop
@@ -53,9 +66,9 @@ app.post('/register', (request, response) => {
     })
 })
 
-//TODO: Måste fixa så dateCreated och author görs automatiskt och inte manuellt!
+//TODO: Måste fixa så author görs automatiskt och inte manuellt!
 app.post('/article/new', (request, response) => {
-    database.run('insert into article (title, content, dateCreated, author, summary) values (?, ?, ?, ?, ?)', [request.body.title, request.body.content, request.body.dateCreated, request.body.author, request.body.summary])
+    database.run('insert into article (title, content, dateCreated, author, summary) values (?, ?, ?, ?, ?)', [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary])
     .then(() => {
         response.send('Ett nytt inlägg har skapats!');
     })
@@ -64,7 +77,7 @@ app.post('/article/new', (request, response) => {
     })
 })
 
-//PUT anrop
+//PUT anrop TODO: Dessa fungerar inte som dem ska!!! Dem tar bort allt!!!
 app.put('/users/edit/:username', (request, response) => {
     database.run('update users set userEmail=?, password=? where username=?', [request.body.userEmail, request.body.password, request.params.username])
     .then(() => {
@@ -79,9 +92,8 @@ app.put('/profile/edit/:username', (request, response) => {
     })
 })
 
-//TODO: Måste göra så att dateEdited fungerar automatiskt och inte behövs skrivas in manuellt!
 app.put('/article/edit/:articleId', (request, response) => {
-    database.run('update article set title=?, content=?, dateEdited=?, summary=?, tags=?, references=? where articleId=?', [request.body.title, request.body.content, request.body.dateEdited, request.body.summary, request.body.tags, request.body.references, request.params.articleId])
+    database.run('update article set title=?, content=?, dateEdited=?, summary=?, tags=?, references=? where articleId=?', [request.body.title, request.body.content, currentDate, request.body.summary, request.body.tags, request.body.references, request.params.articleId])
     .then(() => {
         response.send('Du uppdaterade en artikel!');
     })
