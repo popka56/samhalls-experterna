@@ -3,7 +3,7 @@
     <!--Artikelns Content-->
     <div class="row" id="content">
       <h2 class="col-md-8 col-sm-12 my-col" style="padding-top: 10px;">Lorem ipsum</h2>
-      <h3 class="col-md-8 col-sm-12 my-col">Författare: John Doe | Yrkeskategori: IT | Datum: 2020-02-27 | Senast ändrad: 2020-02-28</h3>
+      <h3 class="col-md-8 col-sm-12 my-col">Författare: <router-link to="/profil">John Doe</router-link> | Yrkeskategori: <router-link to="/yrke">IT</router-link> | Datum: 2020-02-27 | Senast ändrad: 2020-02-28</h3>
       <p class="col-md-8 col-sm-12 my-col">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
         ut labore et dolore magna aliqua. Malesuada proin libero nunc consequat interdum. Lectus urna duis convallis convallis tellus. 
         Vitae sapien pellentesque habitant morbi tristique senectus et. Quisque non tellus orci ac auctor. Purus semper eget duis at 

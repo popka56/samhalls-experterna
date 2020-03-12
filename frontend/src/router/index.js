@@ -61,7 +61,11 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  //Denna funktion nedan gör så sidan scrollas upp till toppen varje gång man byter route.
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router
