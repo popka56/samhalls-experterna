@@ -4,155 +4,47 @@
       <div class="container">
         <h2 class="pt-4">Alla Artiklar</h2>
       </div>
+      
       <!--Loop för artiklarna kommer vara här-->
-      <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
+      <div id="article" class="d-flex flex-row" v-for="article in articles" :key="article.articleId">
+        <div>
+          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
+        </div>
+        <div>
+          <h2 style="font-size: 20px;"><router-link to="/artikel">{{ article.title }}</router-link></h2>
+          <h3>Författare: <router-link to="/profil">{{ article.author }}</router-link> | </h3>
+          <h3>Yrkeskategori: <router-link to="/yrke">{{ article.profession }}</router-link> | </h3>
+          <h3>Datum: {{ article.dateCreated }}</h3>
+          <p>{{ article.summary }}</p>
+        </div>
       </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-      <!--Loop här!-->
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
+      
   </div>
 </div>
 </template>
 
 <script>
 export default {
-  //Din javascript här
+  data: function(){
+    return {
+      //Värden här!
+      articles: undefined
+    }
+  },
+   created() {
+     this.getArticles();
+   },
+  methods:{
+    getArticles(){
+      fetch('http://localhost:3000/article')
+      .then(response => response.json())
+      .then(result => {
+        this.articles = result;
+        console.log(this.articles);
+      })
+        console.log("Fetchar...");
+    }
+  }
 }
 </script>
 

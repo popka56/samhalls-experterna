@@ -68,7 +68,7 @@ app.post('/register', (request, response) => {
 
 //TODO: Måste fixa så author görs automatiskt och inte manuellt!
 app.post('/article/new', (request, response) => {
-    database.run('insert into article (title, content, dateCreated, author, summary) values (?, ?, ?, ?, ?)', [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary])
+    database.run('insert into article (title, content, dateCreated, author, summary, profession) values (?, ?, ?, ?, ?, ?)', [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary, request.body.profession])
     .then(() => {
         response.send('Ett nytt inlägg har skapats!');
     })
