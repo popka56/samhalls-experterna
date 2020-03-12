@@ -37,8 +37,9 @@
         <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
@@ -51,8 +52,8 @@
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
@@ -65,8 +66,8 @@
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
@@ -79,8 +80,8 @@
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
@@ -93,88 +94,88 @@
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
     </div>
-      <div id="article" class="d-flex flex-row">
+        <div id="article" class="d-flex flex-row">
       <div>
         <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-      </div>
+    </div>
       <div class="container">
         <h2 class="pt-4">Mest Populära Artiklar</h2>
       </div>
       <!--Loop här!-->
-      <div id="article" class="d-flex flex-row">
+        <div id="article" class="d-flex flex-row">
       <div>
         <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-      </div>
-      <div id="article" class="d-flex flex-row">
+    </div>
+        <div id="article" class="d-flex flex-row">
       <div>
         <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-      </div>
-      <div id="article" class="d-flex flex-row">
+    </div>
+        <div id="article" class="d-flex flex-row">
       <div>
         <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-      </div>
-      <div id="article" class="d-flex flex-row">
+    </div>
+        <div id="article" class="d-flex flex-row">
       <div>
         <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
       </div>
       <div>
         <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: John Doe | </h3>
-        <h3>Yrkeskategori: IT | </h3>
+        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
+        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
         <h3>Datum: 2020-02-27</h3>
         <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
           dolore magna aliqua...</p>
       </div>
-      </div>
+    </div>
     </div>
     <!--Yrkeskategorier-->
     <div class="container">
@@ -183,27 +184,27 @@
     <div class="container">
       <div id="card-links" class="card-columns">
         <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text">IT</h2>
+          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
         <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text">IT</h2>
+          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
         <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text">IT</h2>
+          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
         <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text">IT</h2>
+          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
         <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text">IT</h2>
+          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
         <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text">IT</h2>
+          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
       </div>
@@ -255,11 +256,18 @@ export default {
 }
 
 #card-text{
-  color: white;
-  text-shadow: 2px 2px 4px #000000;
   position: absolute;
   padding-left: 3.5em;
   padding-top: 1.8em;
+}
+
+#card-text a{
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+#card-text a:hover{
+  text-decoration: none !important;
 }
 
 #article{
