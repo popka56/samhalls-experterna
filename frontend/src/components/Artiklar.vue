@@ -5,7 +5,7 @@
         <h2 class="pt-4">Alla Artiklar</h2>
       </div>
       
-      <!--Loop för artiklarna kommer vara här-->
+      <!--Loop för artiklarna TODO: Måste göra så länkarna konverteras baserat på artikelns id, första inlägget ska exempelvis bli "/profil/1"-->
       <div id="article" class="d-flex flex-row" v-for="article in articles" :key="article.articleId">
         <div>
           <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
@@ -28,7 +28,11 @@ export default {
   data: function(){
     return {
       //Värden här!
-      articles: undefined
+      articles: undefined,
+      //TODO: Potentiellt något som kan användas för fixa länkarna?
+      articleLink: "/artikel/",
+      authorLink: "/profil/",
+      professionLink: "/yrke/"
     }
   },
    created() {
@@ -40,9 +44,9 @@ export default {
       .then(response => response.json())
       .then(result => {
         this.articles = result;
-        console.log(this.articles);
+        //Ska något mer ske efter fetchen är klar?
       })
-        console.log("Fetchar...");
+        //Ska något hända medans den fetchar?
     }
   }
 }
@@ -50,7 +54,7 @@ export default {
 
 <style scoped>
 #article{
-  max-width: 40vw;
+  width: 40%;
 }
 
 #article h3{
@@ -61,7 +65,7 @@ export default {
 @media screen and (max-width: 768px) {
   #article{
     display: column;
-    max-width: 98%;
+    width: 98%;
     padding: 1%;
   }
 
