@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <!--Artikelns Content TODO: Måste fatta hur man kan använda key värdet (id:t) från artiklar.vue för att veta vilket index av articles som ska användas här i-->
-    <div class="row" id="content">
-      <h2 class="col-md-8 col-sm-12 my-col" style="padding-top: 10px;">{{ articles[4].title }}</h2>
-      <h3 class="col-md-8 col-sm-12 my-col">Författare: <router-link to="/profil">{{ articles[4].author }}</router-link> | 
-          Yrkeskategori: <router-link to="/yrke">{{ articles[4].profession }}</router-link> | 
-          Datum: {{ articles[4].dateCreated }} 
-          <span v-if="articleIsEdited">| Senast ändrad: {{ articles[4].dateEdited }}</span></h3>
-      <p class="col-md-8 col-sm-12 my-col">{{ articles[4].content }} <!--TODO: Vi behöver en lösning för <br><br> när man hoppat en rad-->
+    <!--Artikelns Content TODO: Måste fatta hur man kan använda currentArticleId:t för att veta exakt vilken artikel som ska skrivas ut-->
+    <div class="row" id="content" v-for="article in articles" :key="article.articleId">
+      <h2 class="col-md-8 col-sm-12 my-col" style="padding-top: 10px;">{{ article.title }}</h2>
+      <h3 class="col-md-8 col-sm-12 my-col">Författare: <router-link to="/profil">{{ article.author }}</router-link> | 
+          Yrkeskategori: <router-link to="/yrke">{{ article.profession }}</router-link> | 
+          Datum: {{ article.dateCreated }} 
+          <span v-if="articleIsEdited">| Senast ändrad: {{ article.dateEdited }}</span></h3>
+      <p class="col-md-8 col-sm-12 my-col">{{ article.content }} <!--TODO: Vi behöver en lösning för <br><br> när man hoppat en rad-->
       </p>
       <!--Sidebar TODO: Ska ha författarens info-->
       <div class="card bg-light col-md-3 col-sm-12 my-col align-self-start offset-1" id="sidebar">
@@ -40,7 +40,7 @@
       <h3>Källor:</h3>
       <ol>
         <!--TODO: Behövs en loop för alla references i artikeln, ie v-for reference in articles[4].references-->
-        <li>{{ articles[4].references }}</li>
+        <li>{{ article.references }}</li>
       </ol>
     </div>
   </div>
@@ -53,6 +53,11 @@ export default {
       //Värden här!
       articles: undefined,
       articleIsEdited: false //TODO: Ska bli true om det finns ett dateEdited värde
+    }
+  },
+    props: {
+    currentArticleId: {
+      type: String //Hur använder jag den här så den bestämmer vilken artikel vi ska skriva ut?
     }
   },
    created() {
