@@ -1,29 +1,31 @@
 <template>
   <div class="container">
-    <div class="row no-gutters">
-      <div class="bg-light col-md-8 col-sm-12 my-col">
+    <div class="row">
+      <div class="bg-light col-md-8 col-sm-12 my-col pl-0 pr-0">
         <div class="row">
+          
           <div class="col-md-4 col-sm-12 my-col">
-            
+
             <a href="https://placeholder.com"><img class="img-responsive img-fluid 	d-none d-md-block d-lg-block d-xl-block" src="https://www.gamereactor.se/media/forum/se/15294984_18.jpg"></a>
             
-            <div class="d-md-none d-lg-none float profile-img-small">
+            <div class="d-md-none d-lg-none">
               <div class="d-flex justify-content-center">
                 <a href="https://placeholder.com"><img class="img-thumbnail rounded-circle" id="profile-img" src="https://www.gamereactor.se/media/forum/se/15294984_18.jpg"></a>
               </div>
             </div>
           
           </div>
-          <div class="col-md-7 col-sm-12 my-col pt-2">
-            <h4 class="mb-1">Förnamn Efternamn</h4>
-            <p class="text-muted card-text">Suspendisse varius lorem ac arcu volutpat faucibus. Phasellus nunc . Aenean tincidunt eget turpis id dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas urna diam, commodo tristique interdum vulputate, consequat sit amet metus. Suspendisse congue aliquet metus vitae fringilla. Nam mollis urna nec gravida varius. Nunc vehicula fermentum turpis, a varius est molestie ut. Aenean erat eros, semper eget vestibulum ac, elementum quis nulla. </p>
-          </div>
+            <div class="col-md-7 col-sm-12 my-col pt-3" >
+              <h4 class="mb-1">Förnamn Efternamn</h4>
+              <p class="text-muted card-text">Suspendisse varius lorem ac arcu volutpat faucibus. Phasellus nunc . Aenean tincidunt eget turpis id dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas urna diam, commodo tristique interdum vulputate, consequat sit amet metus. Suspendisse congue aliquet metus vitae fringilla. Nam mollis urna nec gravida varius. Nunc vehicula fermentum turpis, a varius est molestie ut. Aenean erat eros, semper eget vestibulum ac, elementum quis nulla. </p>
+            </div>
         </div>
+        
 
         
 
         <div class="row my-row no-gutters">
-          <div class="col my-col mt-2">
+          <div class="col my-col mt-2 ">
             <h4 class="pl-2" id="title">Inlägg</h4>
           </div>
         </div>
@@ -91,7 +93,7 @@
         
       </div>
         <!-- Introduktion -->
-        <div class="bg-light col-md-3 col-sm-12 my-col align-self-start offset-md-1" id="sidebar">
+        <div class="bg-light col-md-3 col-sm-12 my-col align-self-start offset-md-1 pl-0 pr-0" id="sidebar">
           <div id="introduktion">
             <div class="col-12 pl-0 pr-0">
               <h4 class="mb-0">Lorem ipsum</h4>
@@ -117,7 +119,7 @@
 
           <div>
             <!-- Button trigger modal -->
-            <div class="col-12 d-flex justify-content-center pb-3">
+            <div class="col-12 d-flex justify-content-center p-2">
               <button type="button" class="my-button" data-toggle="modal" data-target="#exampleModal">
                 Ställ en fråga
               </button>
@@ -174,6 +176,7 @@ export default {
 /*Din CSS här*/
 #profil {
   box-shadow: 50px 10px 100px rgba(0, 0, 0, 0.20);
+  box-shadow: 3px 5px 9px -4px rgba(0,0,0,0.75);
   /* background-color: gray; */
 }
 .my-row{
@@ -197,9 +200,6 @@ export default {
 
 #profile-img {
   max-width: 150px;
-}
-.profile-img-small {
-  margin-top: -75px;
 }
 #introduktion-table {
   table-layout: fixed;
