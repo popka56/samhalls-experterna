@@ -1,14 +1,27 @@
 <template>
   <div>
-    <!--Hero images beroende på vilket yrke man tittar på-->
+    <!--Hero images beroende på vilket yrke man tittar på, kanske borde göras genom databasen för att få mindre kod här?-->
+    <div v-if='$route.params.profession === "Bygg"' class="heroImage" id="imageBygg">
+      <h2 class="text-center text-white">Bygg</h2>
+    </div>
     <div v-if='$route.params.profession === "IT"' class="heroImage" id="imageIT">
       <h2 class="text-center text-white">IT</h2>
     </div>
-    <div v-if='$route.params.profession === "TEST"' class="heroImage" id="imageTEST">
-      <h2 class="text-center text-white">TEST</h2>
+    <div v-if='$route.params.profession === "Naturbruk"' class="heroImage" id="imageNaturbruk">
+      <h2 class="text-center text-white">Naturbruk</h2>
     </div>
-    <div class="d-flex flex-row flex-wrap justify-content-center">
-      
+    <div v-if='$route.params.profession === "Kultur"' class="heroImage" id="imageKultur">
+      <h2 class="text-center text-white">Kultur</h2>
+    </div>
+    <div v-if='$route.params.profession === "Medicin"' class="heroImage" id="imageMedicin">
+      <h2 class="text-center text-white">Medicin</h2>
+    </div>
+    <div v-if='$route.params.profession === "Drift"' class="heroImage" id="imageDrift">
+      <h2 class="text-center text-white">Drift</h2>
+    </div>
+
+    <!--Container för alla artiklarna-->
+    <div class="d-flex flex-row flex-wrap justify-content-center">  
       <!--Heading för varje sortering av artiklar, kopiera med loopen senare när nya sorteringssätt lägg till-->
       <div class="container">
         <h2 class="pt-4">Alla Artiklar</h2>
@@ -73,6 +86,14 @@ export default {
   text-shadow: 2px 2px 4px #000000;
 }
 
+#imageBygg{
+  background: url('https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 #imageIT{
   background: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
   background-repeat: no-repeat;
@@ -81,8 +102,32 @@ export default {
   background-attachment: fixed;
 }
 
-#imageTEST{
-  background: url('https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+#imageNaturbruk{
+  background: url('https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#imageMedicin{
+  background: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#imageKultur{
+  background: url('https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#imageDrift{
+  background: url('https://images.unsplash.com/photo-1525207106105-b340f7384b30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
