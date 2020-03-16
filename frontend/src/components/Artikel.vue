@@ -8,27 +8,17 @@
           Datum: {{ article[0].dateCreated }} 
           <span v-if="articleIsEdited">| Senast ändrad: {{ article[0].dateEdited }}</span></h3>
       <pre class="col-md-8 col-sm-12 my-col">{{ article[0].content }}</pre>
-      <!--Sidebar TODO: Ska ha författarens info-->
+      <!--Sidebar-->
       <div class="card bg-light col-md-3 col-sm-12 my-col align-self-start offset-1" id="sidebar">
         <div id="introduktion">
-          <h4 class="card-title">Lorem ipsum</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>  
+          <h4 class="card-title">{{ author[0].profileName }}</h4>
+          <p class="card-text">{{ author[0].profileDescription }}</p>  
           <table id="introduktion-table">
             <tr>
-              <th>Arbetsplats:</th>
+              <th>Meriter:</th>
             </tr>
             <tr>
-              <td>CGI</td>
-            </tr>
-            <tr>
-              <th>Utbildning:</th>
-            </tr>
-            <tr>
-              <td>Webbutveckling</td>
+              <td>{{ author[0].profileMerits }}</td>
             </tr>
           </table> 
         </div>
@@ -51,6 +41,7 @@ export default {
     return {
       //Värden här!
       article: undefined,
+      author: undefined,
       articleIsEdited: false
     }
   },
@@ -66,6 +57,13 @@ export default {
         if(this.article[0].dateEdited !== null){
           this.articleIsEdited = true;
         }
+
+      fetch('http://localhost:3000/users/' + this.article[0].author)
+      .then(response => response.json())
+      .then(result => {
+        this.author = result;
+        console.log(this.author)
+        })
         //Ska något mer ske efter fetchen är klar?
       })
         //Ska något hända medans den fetchar?
