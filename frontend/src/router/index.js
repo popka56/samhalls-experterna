@@ -27,16 +27,14 @@ const routes = [
     component: Hem
   },
   {
-    path: '/yrke/', //TODO: Lägg in prop här när det är dags att använda det
+    path: '/yrke/:profession',
     name: 'Yrke',
-    component: Yrke,
-    props: true
+    component: Yrke
   },
   {
-    path: '/artikel/:currentArticleId',
+    path: '/artikel/:articleId',
     name: 'Artikel',
-    component: Artikel,
-    props: true
+    component: Artikel
   },
   {
     path: '/artiklar',
@@ -44,10 +42,9 @@ const routes = [
     component: Artiklar
   },
   {
-    path: '/profil', //TODO: Lägg in prop här när det är dags att använda det
+    path: '/profil/', //TODO: Lägg in params här när det är dags att använda det
     name: 'Profil',
-    component: Profil,
-    props: true
+    component: Profil
   },
   {
     path: '/sok',

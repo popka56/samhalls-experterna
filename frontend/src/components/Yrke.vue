@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div id="heroImage">
-        <h2 class="text-center text-white">IT</h2>
+    <!--Hero images beroende på vilket yrke man tittar på-->
+    <div v-if='$route.params.profession === "IT"' class="heroImage" id="imageIT">
+      <h2 class="text-center text-white">IT</h2>
+    </div>
+    <div v-if='$route.params.profession === "TEST"' class="heroImage" id="imageTEST">
+      <h2 class="text-center text-white">TEST</h2>
     </div>
     <div class="d-flex flex-row flex-wrap justify-content-center">
       <div class="container">
         <h2 class="pt-4">Senaste Artiklar</h2>
       </div>
-      <!--Loop för artiklarna kommer vara här-->
+      <!--TODO: Loop för artiklarna inom rätt yrke-->
         <div id="article" class="d-flex flex-row">
       <div>
         <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
@@ -135,9 +139,18 @@ export default {
 </script>
 
 <style scoped>
-#heroImage {
+.heroImage {
   width:100%;
   height:500px;
+}
+
+.heroImage h2 {
+  font-size: 10em;
+  padding-top: 150px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+#imageIT{
   background: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
   background-repeat: no-repeat;
   background-position: center;
@@ -145,10 +158,12 @@ export default {
   background-attachment: fixed;
 }
 
-#heroImage h2 {
-  font-size: 10em;
-  padding-top: 150px;
-  text-shadow: 2px 2px 4px #000000;
+#imageTEST{
+  background: url('https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 #article{
