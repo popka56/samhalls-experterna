@@ -93,7 +93,7 @@ app.post('/article/new', (request, response) => {
 
 //PUT anrop
 app.put('/users/edit/:username', (request, response) => {
-    database.run('update users set userEmail=?, password=? where username=?', 
+    database.run('UPDATE users SET userEmail=?, password=? where username=?', 
     [request.body.userEmail, request.body.password, request.params.username])
     .then(() => {
         response.send(`Användaren ${request.params.username} uppdaterades!`);
