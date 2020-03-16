@@ -57,7 +57,8 @@ app.get('/article/:articleId', (request, response) => {
 
 //POST anrop
 app.post('/register', (request, response) => {
-    database.run('insert into users (username, password, userEmail) values (?, ?, ?)', [request.body.username, request.body.password, request.body.userEmail])
+    database.run('insert into users (username, password, userEmail) values (?, ?, ?)', 
+    [request.body.username, request.body.password, request.body.userEmail])
     .then(() => {
         response.send('En användare har skapats!');
     })
@@ -68,7 +69,8 @@ app.post('/register', (request, response) => {
 
 //TODO: Måste fixa så author görs automatiskt och inte manuellt!
 app.post('/article/new', (request, response) => {
-    database.run('insert into article (title, content, dateCreated, author, summary, profession) values (?, ?, ?, ?, ?, ?)', [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary, request.body.profession])
+    database.run('insert into article (title, content, dateCreated, author, summary, profession) values (?, ?, ?, ?, ?, ?)', 
+    [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary, request.body.profession])
     .then(() => {
         response.send('Ett nytt inlägg har skapats!');
     })
@@ -78,24 +80,29 @@ app.post('/article/new', (request, response) => {
 })
 
 //PUT anrop TODO: Dessa fungerar inte som dem ska!!! Dem tar bort allt!!!
+//Jag kunde skapa en användare och redigare med users/edit/:username samt /profile/edit/:username, du kanske är inkompetent?
 app.put('/users/edit/:username', (request, response) => {
-    database.run('update users set userEmail=?, password=? where username=?', [request.body.userEmail, request.body.password, request.params.username])
+    database.run('update users set userEmail=?, password=? where username=?', 
+    [request.body.userEmail, request.body.password, request.params.username])
     .then(() => {
-        response.send('Du uppdaterade en användare!');
+        response.send(`Användaren ${request.params.username} uppdaterades!`);
     })
 })
 
 app.put('/profile/edit/:username', (request, response) => {
-    database.run('update users set profileName=?, profileDescription=?, profilePicture=?, profileMerits=? where username=?', [request.body.profileName, request.body.profileDescription, request.body.profilePicture, request.body.profileMerits, request.params.username])
+    console.log(request.body)
+    database.run('update users set profileName=?, profileDescription=?, profilePicture=?, profileMerits=? where username=?', 
+    [request.body.profileName, request.body.profileDescription, request.body.profilePicture, request.body.profileMerits, request.params.username])
     .then(() => {
         response.send('Du uppdaterade en användare!');
     })
 })
 
 app.put('/article/edit/:articleId', (request, response) => {
-    database.run('update article set title=?, content=?, dateEdited=?, summary=?, tags=?, references=? where articleId=?', [request.body.title, request.body.content, currentDate, request.body.summary, request.body.tags, request.body.references, request.params.articleId])
+    database.run('UPDATE article SET title=?, content=? WHERE articleId=?', 
+    [request.body.title, request.body.content, request.params.articleId])
     .then(() => {
-        response.send('Du uppdaterade en artikel!');
+            response.status(202).send('Du uppdaterade en artikel!');
     })
 })
 
