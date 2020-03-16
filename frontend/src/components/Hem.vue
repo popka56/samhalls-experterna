@@ -183,6 +183,7 @@
     </div>
     <div class="container">
       <div id="card-links" class="card-columns">
+        <!--TODO: Dessa är gjorde för väldigt exakta värden med bild och texten, kanske behöver göras om för att fungera med vilken bild och text som helst?-->
         <div class="card-body text-center" style="width: 18rem;">
           <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">

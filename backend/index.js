@@ -109,9 +109,10 @@ app.put('/profile/edit/:username', (request, response) => {
     })
 })
 
+//Uppdatera titeln eller content av en artikel
 app.put('/article/edit/:articleId', (request, response) => {
-    database.run('UPDATE article SET title=?, content=? WHERE articleId=?', 
-    [request.body.title, request.body.content, request.params.articleId])
+    database.run('UPDATE article SET title=?, content=?, dateEdited=? WHERE articleId=?', 
+    [request.body.title, request.body.content, request.params.articleId, currentDate])
     .then(() => {
             response.status(202).send('Du uppdaterade en artikel!');
     })
