@@ -7,8 +7,7 @@
           Yrkeskategori: <router-link :to='"/yrke/" + article[0].profession'>{{ article[0].profession }}</router-link> | 
           Datum: {{ article[0].dateCreated }} 
           <span v-if="articleIsEdited">| Senast ändrad: {{ article[0].dateEdited }}</span></h3>
-      <p class="col-md-8 col-sm-12 my-col">{{ article[0].content }} <!--TODO: Vi behöver en lösning för <br><br> när man hoppat en rad-->
-      </p>
+      <pre class="col-md-8 col-sm-12 my-col">{{ article[0].content }}</pre>
       <!--Sidebar TODO: Ska ha författarens info-->
       <div class="card bg-light col-md-3 col-sm-12 my-col align-self-start offset-1" id="sidebar">
         <div id="introduktion">
@@ -60,7 +59,7 @@ export default {
    },
   methods:{
     getArticles(){
-      fetch('http://localhost:3000/article/' + this.$route.params.articleId)
+      fetch('http://localhost:3000/article/id/' + this.$route.params.articleId)
       .then(response => response.json())
       .then(result => {
         this.article = result;
@@ -100,5 +99,13 @@ export default {
 
 #sources h3{
   padding-left: 20px;
+}
+
+/*pre byter automatiskt font, dessa överskrider det så det blir som resten av sidan*/
+pre{
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  white-space: pre-wrap;
 }
 </style>
