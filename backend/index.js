@@ -82,7 +82,7 @@ app.post('/article/new', (request, response) => {
 //PUT anrop TODO: Dessa fungerar inte som dem ska!!! Dem tar bort allt!!!
 //Jag kunde skapa en användare och redigare med users/edit/:username samt /profile/edit/:username, du kanske är inkompetent?
 app.put('/users/edit/:username', (request, response) => {
-    database.run('update users set userEmail=?, password=? where username=?', 
+    database.run('UPDATE users SET userEmail=?, password=? where username=?', 
     [request.body.userEmail, request.body.password, request.params.username])
     .then(() => {
         response.send(`Användaren ${request.params.username} uppdaterades!`);
