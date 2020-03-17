@@ -62,7 +62,6 @@ export default {
       .then(response => response.json())
       .then(result => {
         this.author = result;
-        console.log(this.author)
         })
         //Ska något mer ske efter fetchen är klar?
       })
