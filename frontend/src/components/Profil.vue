@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
-    <div class="row">
+  <div class="container pl-0 pr-0">
+    <div class="row no-gutters">
       <div class="bg-light col-md-8 col-sm-12 my-col pl-0 pr-0">
-        <div class="row">
+        <div class="row pl-0 pr-0">
           
           <div class="col-md-4 col-sm-12 my-col">
 
@@ -166,19 +166,29 @@
 export default {  
   data: function () {
     return {
+      profile: undefined,
       showModal: false
     }
   },
+  created() {
+     this.getProfile();
+   },
+  methods:{
+    getProfile(){
+      fetch('http://localhost:3000/')
+      .then(response => response.json())
+      .then(result => {
+        this.profile = result;
+        //Ska något mer ske efter fetchen är klar?
+      })
+        //Ska något hända medans den fetchar?
+    }
+  }
 }
 </script>
 
 <style scoped>
 /*Din CSS här*/
-#profil {
-  box-shadow: 50px 10px 100px rgba(0, 0, 0, 0.20);
-  box-shadow: 3px 5px 9px -4px rgba(0,0,0,0.75);
-  /* background-color: gray; */
-}
 .my-row{
   background: #7AE2F0;
   box-shadow: inset 0px 7px 10px -10px #000000;
@@ -195,7 +205,6 @@ export default {
 .my-button:hover {
   border: 0;
   box-shadow: inset 0px 0px 10px -5px #000000;
-  
 }
 
 #profile-img {
