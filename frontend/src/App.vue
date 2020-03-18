@@ -15,8 +15,8 @@
       <div id="menu-items" class="col d-flex justify-content-around">
         <router-link to="/hem"><a>Hem</a></router-link> |
         <!-- <router-link to="/om">Om oss</router-link> | -->
-        <router-link to="/artiklar">Artiklar</router-link> |
-        <router-link to="/yrke">Yrke</router-link> |
+        <router-link to="/yrke/Bygg">Yrke: Bygg</router-link> |
+        <router-link to="/yrke/IT">Yrke: IT</router-link> |
         <!-- <router-link to="/sok">Sök</router-link> | -->
         <router-link to="/profil">Profil</router-link>
       </div>
