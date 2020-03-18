@@ -92,7 +92,8 @@ i {
 
 footer li > a {
   color: whitesmoke !important;
-  }
+}
+
 </style>
 
 <style scoped>
@@ -128,7 +129,12 @@ footer {
   padding: 0;
   margin: 0;
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
+}
+
+.router-view{
+  position: relative;
+  min-height: 100vh;
 }
 </style>

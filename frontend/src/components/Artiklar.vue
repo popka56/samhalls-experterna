@@ -36,7 +36,7 @@ export default {
    },
   methods:{
     getArticles(){
-      fetch('http://localhost:3000/article')
+      fetch('http://localhost:3000/article/all')
       .then(response => response.json())
       .then(result => {
         this.articles = result;

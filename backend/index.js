@@ -45,7 +45,7 @@ app.get('/users/:user', (request, response) => {
     })
 })
 
-//Hämta alla artiklar
+//Hämta alla artiklar utan sortering (sorteras efter senaste artikeln SIST)
 app.get('/article', (request, response) => {
     database.all('select * from article')
     .then(articles => {
@@ -61,46 +61,29 @@ app.get('/article/id/:articleId', (request, response) => {
     })
 })
 
-//Hämta artiklar baserat på yrke
+//Hämta artiklar baserat på yrke (sorteras med senaste artikeln FÖRST)
+//Eftersom arrayen i databsen automatiskt lägger in varje ny artikel efter den förra
+//behöver vi bara använda reverse() för att få dem i ordning efter senaste först.
 app.get('/article/profession/:profession', (request, response) => {
     database.all('select * from article where profession=?', [request.params.profession])
     .then(articles => {
-        response.send(articles);
+        let sortedArticles = articles.reverse();
+        response.send(sortedArticles);
     })
 })
 
-//Hämta artiklar baserat på en författare
+//Hämta artiklar baserat på en författare (sorteras med senaste artikeln FÖRST)
 app.get('/article/author/:author', (request, response) => {
     database.all('select * from article where author=?', [request.params.author])
     .then(articles => {
-        response.send(articles);
+        let sortedArticles = articles.reverse();
+        response.send(sortedArticles);
     })
 })
 
-//Hämta och sortera alla artiklar efter datum. 
-//Eftersom alla artiklar automatiskt läggs längst bak i arrayen kommer egentligen alla artiklar 
-//alltid ligga i ordning efter datum, fast åt fel håll. Vi behöver alltså bara flippa hela 
-//arrayen för att få rätt ordning på dem.
-app.get('/article/sort/all/date', (request, response) => {
+//Hämta och sortera alla artiklar (sorteras med senaste artikeln FÖRST)
+app.get('/article/all', (request, response) => {
     database.all('select * from article')
-    .then(articles => {
-        let sortedArticles = articles.reverse();
-        response.send(sortedArticles);
-    })
-})
-
-//Hämta och sortera artiklar av ett visst yrke efter datum. 
-app.get('/article/sort/:profession/date', (request, response) => {
-    database.all('select * from article where profession=?', [request.params.profession])
-    .then(articles => {
-        let sortedArticles = articles.reverse();
-        response.send(sortedArticles);
-    })
-})
-
-//Hämta och sortera artiklar från en viss användare efter datum. TODO: Ger bara en tom array. Varför???
-app.get('/article/sort/:author/date', (request, response) => {
-    database.all('select * from article where author=?', [request.params.author])
     .then(articles => {
         let sortedArticles = articles.reverse();
         response.send(sortedArticles);
@@ -111,7 +94,7 @@ app.get('/article/sort/:author/date', (request, response) => {
 //Använder sort() för att jämföra vilken som har högst clicks, vilket gör att den läggs 
 //i ordning efter vilken som har MINST clicks först. Därför gör vi en reverse() på den i 
 //responsen, så den visar den med MEST först istället.
-app.get('/article/sort/all/popularity', (request, response) => {
+app.get('/article/popularity/all', (request, response) => {
     database.all('select * from article')
     .then(articles => {
         let sortedArticles = articles.sort(function(a, b){return a.clicks - b.clicks});
@@ -120,7 +103,7 @@ app.get('/article/sort/all/popularity', (request, response) => {
 })
 
 //Hämta och sortera artiklar efter populäritet (clicks) inom ett visst yrke
-app.get('/article/sort/:profession/popularity', (request, response) => {
+app.get('/article/popularity/profession/:profession', (request, response) => {
     database.all('select * from article where profession=?', [request.params.profession])
     .then(articles => {
         let sortedArticles = articles.sort(function(a, b){return a.clicks - b.clicks});
@@ -128,8 +111,8 @@ app.get('/article/sort/:profession/popularity', (request, response) => {
     })
 })
 
-//TODO: Hämta och sortera artiklar efter populäritet (clicks) från en viss författare GER BARA EN TOM ARRAY NU, VET EJ VARFÖR!
-app.get('/article/sort/:author/popularity', (request, response) => {
+//Hämta och sortera artiklar efter populäritet (clicks) från en viss författare
+app.get('/article/popularity/author/:author', (request, response) => {
     database.all('select * from article where author=?', [request.params.author])
     .then(articles => {
         let sortedArticles = articles.sort(function(a, b){return a.clicks - b.clicks});

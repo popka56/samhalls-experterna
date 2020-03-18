@@ -77,12 +77,12 @@ export default {
   methods:{
     getArticles(){
       //Hämta artiklar efter datum
-      fetch('http://localhost:3000/article/sort/' + this.$route.params.profession + '/date')
+      fetch('http://localhost:3000/article/profession/' + this.$route.params.profession)
       .then(response => response.json())
       .then(result => {
         this.articlesByDate = result;
         //Hämta populära artiklar
-        fetch('http://localhost:3000/article/sort/' + this.$route.params.profession + '/popularity')
+        fetch('http://localhost:3000/article/popularity/profession/' + this.$route.params.profession)
         .then(response => response.json())
         .then(result => {
           this.articlesByPopularity = result;

@@ -113,12 +113,12 @@ export default {
   methods:{
     getArticles(){
       //Hämta artiklar efter datum
-      fetch('http://localhost:3000/article/sort/all/date')
+      fetch('http://localhost:3000/article/all')
       .then(response => response.json())
       .then(result => {
         this.articlesByDate = result;
         //Hämta populära artiklar
-        fetch('http://localhost:3000/article/sort/all/popularity')
+        fetch('http://localhost:3000/article/popularity/all')
         .then(response => response.json())
         .then(result => {
           this.articlesByPopularity = result;
