@@ -1,35 +1,24 @@
 <template>
   <div class="container">
-    <!--Artikelns Content TODO: Måste fatta hur man kan använda currentArticleId:t för att veta exakt vilken artikel som ska skrivas ut-->
-    <div class="row" id="content" v-for="article in articles" :key="article.articleId">
-      <h2 class="col-md-8 col-sm-12 my-col" style="padding-top: 10px;">{{ article.title }}</h2>
-      <h3 class="col-md-8 col-sm-12 my-col">Författare: <router-link to="/profil">{{ article.author }}</router-link> | 
-          Yrkeskategori: <router-link to="/yrke">{{ article.profession }}</router-link> | 
-          Datum: {{ article.dateCreated }} 
-          <span v-if="articleIsEdited">| Senast ändrad: {{ article.dateEdited }}</span></h3>
-      <p class="col-md-8 col-sm-12 my-col">{{ article.content }} <!--TODO: Vi behöver en lösning för <br><br> när man hoppat en rad-->
-      </p>
-      <!--Sidebar TODO: Ska ha författarens info-->
+    <!--Artikeln-->
+    <div class="row" id="content">
+      <h2 class="col-md-8 col-sm-12 my-col" style="padding-top: 10px;">{{ article[0].title }}</h2>
+      <h3 class="col-md-8 col-sm-12 my-col">Författare: <router-link :to='"/profil/" + article[0].author'>{{ article[0].author }}</router-link> | 
+          Yrkeskategori: <router-link :to='"/yrke/" + article[0].profession'>{{ article[0].profession }}</router-link> | 
+          Datum: {{ article[0].dateCreated }} 
+          <span v-if="articleIsEdited">| Senast ändrad: {{ article[0].dateEdited }}</span></h3>
+      <pre class="col-md-8 col-sm-12 my-col">{{ article[0].content }}</pre>
+      <!--Sidebar-->
       <div class="card bg-light col-md-3 col-sm-12 my-col align-self-start offset-1" id="sidebar">
         <div id="introduktion">
-          <h4 class="card-title">Lorem ipsum</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>  
+          <h4 class="card-title">{{ author[0].profileName }}</h4>
+          <p class="card-text">{{ author[0].profileDescription }}</p>  
           <table id="introduktion-table">
             <tr>
-              <th>Arbetsplats:</th>
+              <th>Meriter:</th>
             </tr>
             <tr>
-              <td>CGI</td>
-            </tr>
-            <tr>
-              <th>Utbildning:</th>
-            </tr>
-            <tr>
-              <td>Webbutveckling</td>
+              <td>{{ author[0].profileMerits }}</td>
             </tr>
           </table> 
         </div>
@@ -40,7 +29,7 @@
       <h3>Källor:</h3>
       <ol>
         <!--TODO: Behövs en loop för alla references i artikeln, ie v-for reference in articles[4].references-->
-        <li>{{ article.references }}</li>
+        <li>{{ article[0].references }}</li>
       </ol>
     </div>
   </div>
@@ -51,13 +40,9 @@ export default {
   data: function(){
     return {
       //Värden här!
-      articles: undefined,
-      articleIsEdited: false //TODO: Ska bli true om det finns ett dateEdited värde
-    }
-  },
-    props: {
-    currentArticleId: {
-      type: String //Hur använder jag den här så den bestämmer vilken artikel vi ska skriva ut?
+      article: undefined,
+      author: undefined,
+      articleIsEdited: false
     }
   },
    created() {
@@ -65,10 +50,19 @@ export default {
    },
   methods:{
     getArticles(){
-      fetch('http://localhost:3000/article')
+      fetch('http://localhost:3000/article/id/' + this.$route.params.articleId)
       .then(response => response.json())
       .then(result => {
-        this.articles = result;
+        this.article = result;
+        if(this.article[0].dateEdited !== null){
+          this.articleIsEdited = true;
+        }
+
+      fetch('http://localhost:3000/users/' + this.article[0].author)
+      .then(response => response.json())
+      .then(result => {
+        this.author = result;
+        })
         //Ska något mer ske efter fetchen är klar?
       })
         //Ska något hända medans den fetchar?
@@ -102,5 +96,13 @@ export default {
 
 #sources h3{
   padding-left: 20px;
+}
+
+/*pre byter automatiskt font, dessa överskrider det så det blir som resten av sidan*/
+pre{
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  white-space: pre-wrap;
 }
 </style>

@@ -8,7 +8,7 @@
       <!--Artikel loopen-->
       <div id="article" class="d-flex flex-row" v-for="article in articles" :key="article.articleId">
         <div>
-          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
+          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
@@ -36,7 +36,7 @@ export default {
    },
   methods:{
     getArticles(){
-      fetch('http://localhost:3000/article')
+      fetch('http://localhost:3000/article/all')
       .then(response => response.json())
       .then(result => {
         this.articles = result;

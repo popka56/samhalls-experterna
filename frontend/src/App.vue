@@ -15,8 +15,8 @@
       <div id="menu-items" class="col d-flex justify-content-around">
         <router-link to="/hem"><a>Hem</a></router-link> |
         <!-- <router-link to="/om">Om oss</router-link> | -->
-        <router-link to="/artiklar">Artiklar</router-link> |
-        <router-link to="/yrke">Yrke</router-link> |
+        <router-link to="/artiklar">Alla Artiklar</router-link> |
+        <router-link to="/yrke/IT">Artiklar: IT</router-link> |
         <!-- <router-link to="/sok">Sök</router-link> | -->
         <router-link to="/profil">Profil</router-link>
       </div>
@@ -36,20 +36,8 @@
           <li>
             <a href="https://www.facebook.com/ITHogskolan"><i class="pr-3 fab fa-facebook-f"></i>ITHS-Facebook</a>
           </li>
-          <li>
-            <router-link to="/tos"><i class="pr-3 fas fa-file-alt"></i>Terms of Services</router-link>
-          </li>
-          <li>
-            <a href="https://www.google.com/maps/place/Ebbe+Lieberathsgatan+18C,+412+65+G%C3%B6teborg/@57.6794723,11.99917,17z/data=!3m1!4b1!4m5!3m4!1s0x464ff3ba575254c9:0x1026ff48d864454e!8m2!3d57.6794723!4d12.0013587"><i class="pr-3 fas fa-map-pin"></i>Ebbe Lieberathsgatan 18 c</a>
-          </li>
         </ul>
         <ul class="mb-0 p-3 list-unstyled">
-          <li>
-            <a href="https://www.iths.se/"><i class="pr-3 fas fa-book"></i>IT-Högskolan</a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/ITHogskolan"><i class="pr-3 fab fa-facebook-f"></i>ITHS-Facebook</a>
-          </li>
           <li>
             <router-link to="/tos"><i class="pr-3 fas fa-file-alt"></i>Terms of Services</router-link>
           </li>
@@ -104,7 +92,8 @@ i {
 
 footer li > a {
   color: whitesmoke !important;
-  }
+}
+
 </style>
 
 <style scoped>
@@ -139,5 +128,13 @@ footer {
   color: white;
   padding: 0;
   margin: 0;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+.router-view{
+  position: relative;
+  min-height: 100vh;
 }
 </style>
