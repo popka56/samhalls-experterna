@@ -16,9 +16,9 @@
         <router-link to="/hem"><a>Hem</a></router-link> |
         <!-- <router-link to="/om">Om oss</router-link> | -->
         <router-link to="/artiklar">Alla Artiklar</router-link> |
-        <router-link to="/yrke/IT">Artiklar: IT</router-link> |
+        <router-link to="/yrke/IT">Artiklar: IT</router-link>
         <!-- <router-link to="/sok">Sök</router-link> | -->
-        <router-link to="/profil">Profil</router-link>
+        <!-- <router-link to="/profil">Profil</router-link> -->
       </div>
     </div>
 

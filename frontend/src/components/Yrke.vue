@@ -28,7 +28,7 @@
       </div>
 
       <!--Loop för artiklar här!-->
-      <div id="article" class="d-flex flex-row" v-for="article in articlesByDate" :key="article.articleId">
+      <div id="article" class="d-flex flex-row justify-content-center" v-for="article in articlesByDate" :key="article.articleId">
         <div>
           <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
@@ -45,7 +45,7 @@
         <h2 class="pt-4">Mest Populära Artiklar</h2>
       </div>
 
-      <div id="article" class="d-flex flex-row" v-for="article in articlesByPopularity" :key="article.articleId">
+      <div id="article" class="d-flex flex-row justify-content-center" v-for="article in articlesByPopularity" :key="article.articleId">
         <div>
           <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
@@ -155,7 +155,7 @@ export default {
 }
 
 #article{
-  width: 40%;
+  width: 50%;
 }
 
 #article h3{
@@ -168,10 +168,6 @@ export default {
     display: column;
     width: 98%;
     padding: 1%;
-  }
-
-  #article h3{
-    display: block;
   }
 }
 </style>
