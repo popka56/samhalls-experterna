@@ -15,8 +15,8 @@
       <div id="menu-items" class="col d-flex justify-content-around">
         <router-link to="/hem"><a>Hem</a></router-link> |
         <!-- <router-link to="/om">Om oss</router-link> | -->
-        <router-link to="/yrke/Bygg">Yrke: Bygg</router-link> |
-        <router-link to="/yrke/IT">Yrke: IT</router-link> |
+        <router-link to="/artiklar">Alla Artiklar</router-link> |
+        <router-link to="/yrke/IT">Artiklar: IT</router-link> |
         <!-- <router-link to="/sok">Sök</router-link> | -->
         <router-link to="/profil">Profil</router-link>
       </div>
@@ -127,5 +127,8 @@ footer {
   color: white;
   padding: 0;
   margin: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 </style>
