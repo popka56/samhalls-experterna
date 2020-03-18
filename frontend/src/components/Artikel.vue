@@ -28,7 +28,7 @@
     <div class="row" id="sources">
       <h3>Källor:</h3>
       <ol>
-        <!--TODO: Behövs en loop för alla references i artikeln, ie v-for reference in articles[4].references-->
+        <!--TODO: Behövs en loop för alla references i artikeln, ie v-for reference in articles[0].references-->
         <li>{{ article[0].references }}</li>
       </ol>
     </div>
@@ -42,6 +42,7 @@ export default {
       //Värden här!
       article: undefined,
       author: undefined,
+      clicks: undefined,
       articleIsEdited: false
     }
   },
@@ -54,15 +55,30 @@ export default {
       .then(response => response.json())
       .then(result => {
         this.article = result;
+        //Vi hämtar clicks och ökar med 1
+        this.clicks = this.article[0].clicks;
+        this.clicks++;
+        //Vi kollar om det finns ett värde i dateEdited för att veta om vi ska visa det eller inte
         if(this.article[0].dateEdited !== null){
           this.articleIsEdited = true;
         }
 
+      //Vi hämtar författarens info för att skriva ut det i sidebaren
       fetch('http://localhost:3000/users/' + this.article[0].author)
       .then(response => response.json())
       .then(result => {
         this.author = result;
         })
+      
+      //Vi använder vårt nya clicks-värde och PUT:ar in det i databasen
+      fetch('http://localhost:3000/article/click/' + this.article[0].articleId, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ clicks: this.clicks }),
+      })
+      .then((response) => response.json())
         //Ska något mer ske efter fetchen är klar?
       })
         //Ska något hända medans den fetchar?

@@ -177,6 +177,15 @@ app.put('/article/edit/:articleId', (request, response) => {
     })
 })
 
+//Uppdatera clicks av en artikel
+app.put('/article/click/:articleId', (request, response) => {
+    database.run('UPDATE article SET clicks=? WHERE articleId=?', 
+    [request.body.clicks, request.params.articleId])
+    .then(() => {
+            response.status(202).send('Du uppdaterade en artikel!');
+    })
+})
+
 //===DELETE anrop===
 
 //Ta bort en användare baserat på användarnamnet
