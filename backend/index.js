@@ -98,7 +98,7 @@ app.get('/article/sort/:profession/date', (request, response) => {
     })
 })
 
-//TODO: Hämta och sortera artiklar från en viss användare efter datum. GER BARA EN TOM ARRAY NU, VET EJ VARFÖR!
+//Hämta och sortera artiklar från en viss användare efter datum. TODO: Ger bara en tom array. Varför???
 app.get('/article/sort/:author/date', (request, response) => {
     database.all('select * from article where author=?', [request.params.author])
     .then(articles => {

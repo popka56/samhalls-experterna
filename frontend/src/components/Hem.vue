@@ -31,161 +31,46 @@
       <div class="container">
         <h2 class="pt-4">Senaste Artiklar</h2>
       </div>
-      <!--Loop för artiklarna kommer vara här-->
-      <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
+
+      <div id="article" class="d-flex flex-row" v-for="article in articlesByDate" :key="article.articleId">
+        <div>
+          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
+        </div>
+        <div>
+          <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
+          <h3>Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
+          <h3>Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
+          <h3>Datum: {{ article.dateCreated }}</h3>
+          <p>{{ article.summary }}</p>
+        </div>
       </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
+
       <div class="container">
         <h2 class="pt-4">Mest Populära Artiklar</h2>
       </div>
-      <!--Loop här!-->
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
+
+      <div id="article" class="d-flex flex-row" v-for="article in articlesByPopularity" :key="article.articleId">
+        <div>
+          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
+        </div>
+        <div>
+          <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
+          <h3>Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
+          <h3>Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
+          <h3>Datum: {{ article.dateCreated }}</h3>
+          <p>{{ article.summary }}</p>
+        </div>
       </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
+
     </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-        <div id="article" class="d-flex flex-row">
-      <div>
-        <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-      </div>
-      <div>
-        <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-        <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-        <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-        <h3>Datum: 2020-02-27</h3>
-        <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua...</p>
-      </div>
-    </div>
-    </div>
-    <!--Yrkeskategorier-->
-    <div class="container">
+    <!--Yrkeskategorier TODO: Dessa måste göras om, dem är för exakt gjorda. Måste vara enklare att ändra texten eller bilden  och att det fortfarande blir rätt!-->
+    <!--<div class="container">
       <h2 class="pt-4">Artiklar Efter Yrke</h2>
     </div>
     <div class="container">
       <div id="card-links" class="card-columns">
-        <!--TODO: Dessa är gjorde för väldigt exakta värden med bild och texten, kanske behöver göras om för att fungera med vilken bild och text som helst?-->
         <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
+          <h2 id="card-text" class="card-text"><router-link to="/yrke/IT">IT</router-link></h2>
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
         <div class="card-body text-center" style="width: 18rem;">
@@ -209,13 +94,39 @@
           <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
 export default {
-  //Din javascript här
+  data: function(){
+    return {
+      //Värden här!
+      articlesByDate: undefined,
+      articlesByPopularity: undefined
+    }
+  },
+   created() {
+     this.getArticles();
+   },
+  methods:{
+    getArticles(){
+      //Hämta artiklar efter datum
+      fetch('http://localhost:3000/article/sort/all/date')
+      .then(response => response.json())
+      .then(result => {
+        this.articlesByDate = result;
+        //Hämta populära artiklar
+        fetch('http://localhost:3000/article/sort/all/popularity')
+        .then(response => response.json())
+        .then(result => {
+          this.articlesByPopularity = result;
+        }) 
+      })
+        //TODO: Ska något hända medans den fetchar?
+    }
+  }
 }
 </script>
 
@@ -272,7 +183,7 @@ export default {
 }
 
 #article{
-  max-width: 40vw;
+  width: 40%;
 }
 
 #article h3{
@@ -283,7 +194,7 @@ export default {
 @media screen and (max-width: 768px) {
   #article{
     display: column;
-    max-width: 98%;
+    width: 98%;
     padding: 1%;
   }
 
@@ -291,5 +202,4 @@ export default {
     display: block;
   }
 }
-
 </style>
