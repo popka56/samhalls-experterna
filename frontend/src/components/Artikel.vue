@@ -25,12 +25,9 @@
       </div>
     </div>
     <!--Artikelns Källor-->
-    <div class="row" id="sources">
+    <div id="sources">
       <h3>Källor:</h3>
-      <ol>
-        <!--TODO: Behövs en loop för alla references i artikeln, ie v-for reference in articles[0].references-->
-        <li>{{ article[0].references }}</li>
-      </ol>
+        <pre>{{ article[0].references }}</pre>
     </div>
   </div>
 </template>
@@ -108,10 +105,6 @@ export default {
 
 #sources{
   list-style-type: lower-roman;
-}
-
-#sources h3{
-  padding-left: 20px;
 }
 
 /*pre byter automatiskt font, dessa överskrider det så det blir som resten av sidan*/

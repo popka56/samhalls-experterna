@@ -8,6 +8,7 @@ import Profil from '../components/Profil.vue'
 import Sok from '../components/Sok.vue'
 import Login from '../components/Login.vue'
 import Tos from '../components/Tos.vue'
+import Granskning from '../components/Granskning.vue'
 
 Vue.use(VueRouter)
 
@@ -42,7 +43,7 @@ const routes = [
     component: Artiklar
   },
   {
-    path: '/profil/:user', //TODO: Lägg in params här när det är dags att använda det
+    path: '/profil/:user',
     name: 'Profil',
     component: Profil
   },
@@ -56,6 +57,11 @@ const routes = [
     name: 'Login',
     component: Login
   },
+  {
+    path: '/granskning',
+    name: 'Granskning',
+    component: Granskning
+  }
 ]
 
 const router = new VueRouter({
