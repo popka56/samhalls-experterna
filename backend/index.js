@@ -124,8 +124,8 @@ app.get('/article/popularity/author/:author', (request, response) => {
 
 //Registrera nya användare, behöver användarnamn, lösenord och e-post
 app.post('/register', (request, response) => {
-    database.run('insert into users (username, password, userEmail) values (?, ?, ?)', 
-    [request.body.username, request.body.password, request.body.userEmail])
+    database.run('insert into users (username, password, userEmail, userCreatedDate) values (?, ?, ?, ?)', 
+    [request.body.username, request.body.password, request.body.userEmail, currentDate])
     .then(() => {
         response.send('En användare har skapats!');
     })
