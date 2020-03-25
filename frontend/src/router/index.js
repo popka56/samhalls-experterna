@@ -42,7 +42,7 @@ const routes = [
     component: Artiklar
   },
   {
-    path: '/profil/', //TODO: Lägg in params här när det är dags att använda det
+    path: '/profil/:user', //TODO: Lägg in params här när det är dags att använda det
     name: 'Profil',
     component: Profil
   },

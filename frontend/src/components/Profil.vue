@@ -16,8 +16,9 @@
           
           </div>
             <div class="col-md-7 col-sm-12 my-col pt-3" >
-              <h4 class="mb-1">Förnamn Efternamn</h4>
-              <p class="text-muted card-text">Suspendisse varius lorem ac arcu volutpat faucibus. Phasellus nunc . Aenean tincidunt eget turpis id dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas urna diam, commodo tristique interdum vulputate, consequat sit amet metus. Suspendisse congue aliquet metus vitae fringilla. Nam mollis urna nec gravida varius. Nunc vehicula fermentum turpis, a varius est molestie ut. Aenean erat eros, semper eget vestibulum ac, elementum quis nulla. </p>
+              <!-- {{ profile }} -->
+              <h4 class="mb-1">{{ profile[0].profileName }}</h4>
+              <p class="text-muted card-text">{{ profile[0].profileDescription }}</p>
             </div>
         </div>
         
@@ -25,79 +26,72 @@
         
 
         <div class="row my-row no-gutters">
-          <div class="col my-col mt-2 ">
+          <div class="col-11 my-col mt-2 ">
             <h4 class="pl-2" id="title">Inlägg</h4>
           </div>
-        </div>
-
-        <div id="article" class="d-flex flex-row">
-          <div>
-            <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-          </div>
-          <div>
-            <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-            <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-            <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-            <h3>Datum: 2020-02-27</h3>
-            <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-              dolore magna aliqua...</p>
+          <div class="col-1 d-flex align-self-center">
+            <button @click="onClick" id="newPost">+</button>
           </div>
         </div>
-        
-        <div id="article" class="d-flex flex-row">
-          <div>
-            <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-          </div>
-          <div>
-            <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-            <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-            <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-            <h3>Datum: 2020-02-27</h3>
-            <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-              dolore magna aliqua...</p>
-          </div>
-        </div>
-
-        <div id="article" class="d-flex flex-row">
-          <div>
-            <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;">
-          </div>
-          <div>
-            <h2 style="font-size: 20px;"><router-link to="/artikel">Lorem ipsum</router-link></h2>
-            <h3>Författare: <router-link to="/profil">John Doe</router-link> | </h3>
-            <h3>Yrkeskategori: <router-link to="/yrke">IT</router-link> | </h3>
-            <h3>Datum: 2020-02-27</h3>
-            <p>Sammanfattning av artikeln. Lorem ipsum dolor sit amet, consectetur 
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-              dolore magna aliqua...</p>
-          </div>
-        </div>
-
-
-
-        <div class="row">
-          <div class="col d-flex justify-content-center">
-            <nav>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Föregående</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Nästa</a></li>
-              </ul>
-            </nav>
+      
+      <div v-if="showEditor === true">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-sm-12 ">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea2">Titel</label>
+                <input v-model="title" class="form-control" id="exampleFormControlInput1" placeholder="Titel">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea2">Skriv din artikel</label>
+                <textarea v-model="content" class="form-control" rows="14"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea2">Sammanfattning</label>
+                <textarea v-model="summary" class="form-control" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="cars">Yrkesgrupp:</label>
+                <select v-model="profession" id="cars" name="cars">
+                  <option value="IT">IT</option>
+                  <option value="Naturbruk">Naturbruk</option>
+                  <option value="Kultur">Kultur</option>
+                  <option value="Medicin">Medicin</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @click="onClick">Stäng</button>
+                    <button type="button" class="btn btn-primary" @click="writeArticle">Skicka</button>
+                  </div>
+            </form>
           </div>
         </div>
-        
+      </div>
+
+      <div id="article" class="d-flex flex-row" v-for="article in articles" :key="article.articleId">
+        <div>
+          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> 
+        </div>
+        <div>
+          <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
+          <h3>Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
+          <h3>Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
+          <h3>Datum: {{ article.dateCreated }}</h3>
+          <p>{{ article.summary }}</p>
+        </div>
+      </div>
+
+      
+
+
+
       </div>
         <!-- Introduktion -->
         <div class="bg-light col-md-3 col-sm-12 my-col align-self-start offset-md-1 pl-0 pr-0" id="sidebar">
           <div id="introduktion">
             <div class="col-12 pl-0 pr-0">
               <h4 class="mb-0">Lorem ipsum</h4>
-              <p>Hej jag heter Oscar Fredriksson och jag arbetar på ett företag som gör x och har mycket kunskap inom ämnet</p>
+              <p>{{ profile[0].profileMerits }}</p>
             </div>
             <div class="col-12 pl-0 pr-0">
               <table id="introduktion-table" >
@@ -105,13 +99,13 @@
                   <th>Arbetsplats:</th>
                 </tr>
                 <tr>
-                  <td>FöretagFöretagetasdfasdfasdasdfasfafasfasafafasdf</td>
+                  <td>{{ profile[0].profileJob }}</td>
                 </tr>
                 <tr>
                   <th>Utbildning:</th>
                 </tr>
                 <tr>
-                  <td>Ekonomi</td>
+                  <td>{{ profile[0].profileEducation }}</td>
                 </tr>
               </table>
             </div>
@@ -119,13 +113,13 @@
 
           <div>
             <!-- Button trigger modal -->
-            <div class="col-12 d-flex justify-content-center p-2">
+            <!-- <div class="col-12 d-flex justify-content-center p-2">
               <button type="button" class="my-button" data-toggle="modal" data-target="#exampleModal">
                 Ställ en fråga
               </button>
-            </div>
+            </div> -->
             <!-- Frågeformulär -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -149,11 +143,11 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Stäng</button>
-                    <button type="button" class="btn btn-primary">Skicka</button>
+                    <submit type="button" class="btn btn-primary">Skicka</submit>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
@@ -167,21 +161,68 @@ export default {
   data: function () {
     return {
       profile: undefined,
-      showModal: false
+      articles: undefined,
+      showModal: false,
+      showEditor: false,
+      title: undefined,
+      content: undefined,
+      profession: undefined,
+      summary: undefined,
     }
   },
   created() {
      this.getProfile();
+     this.getArticles();
    },
   methods:{
     getProfile(){
-      fetch('http://localhost:3000/')
+      fetch('http://localhost:3000/users/' + this.$route.params.user)
       .then(response => response.json())
       .then(result => {
         this.profile = result;
+
         //Ska något mer ske efter fetchen är klar?
       })
         //Ska något hända medans den fetchar?
+    },
+    getArticles(){
+      fetch('http://localhost:3000/article/author/' + this.$route.params.user)
+      .then(response => response.json())
+      .then(result => {
+        this.articles = result;
+        //Ska något mer ske efter fetchen är klar?
+      })
+        //Ska något hända medans den fetchar?
+    },
+    onClick() {
+      this.showEditor = !this.showEditor;
+    },
+    writeArticle() {
+      fetch('http://localhost:3000/article/new', {
+        body: JSON.stringify({
+        title: this.title,
+        tags: null,
+        content: this.content,
+        references: null,
+        author: this.$route.params.user,
+        dateCreated: null,
+        dateEdited: null,
+        summary: this.summary,
+        articleId: null,
+        profession: this.profession,
+        clicks: null
+      }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      })
+      this.title = undefined,
+      this.content = undefined,
+      this.profession = undefined,
+      this.summary = undefined
+      this.showEditor = !this.showEditor;
+      
     }
   }
 }
@@ -189,6 +230,17 @@ export default {
 
 <style scoped>
 /*Din CSS här*/
+#newPost {
+  background-color: #fff;
+  border: none;
+  color: black;
+  text-decoration: none;
+  
+}
+#newPost:hover {
+  background-color: #FFDB68;
+  
+}
 .my-row{
   background: #7AE2F0;
   box-shadow: inset 0px 7px 10px -10px #000000;
