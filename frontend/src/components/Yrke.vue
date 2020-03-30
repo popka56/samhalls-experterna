@@ -21,22 +21,25 @@
     </div>
 
     <!--Container för alla artiklarna-->
-    <div class="d-flex flex-row flex-wrap justify-content-center">  
+    <div class="d-flex flex-row flex-wrap">  
       <!--Heading för varje sortering av artiklar, kopiera med loopen senare när nya sorteringssätt lägg till-->
       <div class="container">
         <h2 class="pt-4">Senaste Artiklar</h2>
       </div>
 
+      <!--Finns inga artiklar skriver den ut ett meddelande till användaren-->
+      <div class="d-flex justify-content-center" style="width: 100%;" v-if="noArticlesFound===true"><h3>Hittade inga artiklar!</h3></div>
+
       <!--Loop för artiklar här!-->
-      <div id="article" class="d-flex flex-row justify-content-center" v-for="article in articlesByDate" :key="article.articleId">
+      <div id="article" class="d-flex flex-row" v-for="article in articlesByDate" :key="article.articleId">
         <div>
           <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
-          <h3>Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
-          <h3>Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
-          <h3>Datum: {{ article.dateCreated }}</h3>
+          <h3 style="display: inline; font-size: 14px;">Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Datum: {{ article.dateCreated }}</h3>
           <p>{{ article.summary }}</p>
         </div>
       </div>
@@ -44,16 +47,20 @@
       <div class="container">
         <h2 class="pt-4">Mest Populära Artiklar</h2>
       </div>
+      
+      <!--Finns inga artiklar skriver den ut ett meddelande till användaren-->
+      <div class="d-flex justify-content-center" style="width: 100%;" v-if="noArticlesFound===true"><h3>Hittade inga artiklar!</h3></div>
 
-      <div id="article" class="d-flex flex-row justify-content-center" v-for="article in articlesByPopularity" :key="article.articleId">
+      <!--Loop för artiklar här!-->
+      <div id="article" class="d-flex flex-row" v-for="article in articlesByPopularity" :key="article.articleId">
         <div>
           <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
-          <h3>Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
-          <h3>Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
-          <h3>Datum: {{ article.dateCreated }}</h3>
+          <h3 style="display: inline; font-size: 14px;">Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Datum: {{ article.dateCreated }}</h3>
           <p>{{ article.summary }}</p>
         </div>
       </div>
@@ -68,7 +75,8 @@ export default {
     return {
       //Värden här!
       articlesByDate: undefined,
-      articlesByPopularity: undefined
+      articlesByPopularity: undefined,
+      noArticlesFound: false
     }
   },
    created() {
@@ -80,7 +88,13 @@ export default {
       fetch('http://localhost:3000/article/profession/' + this.$route.params.profession)
       .then(response => response.json())
       .then(result => {
-        this.articlesByDate = result;
+        if(result.length===0){
+          this.noArticlesFound = true;
+        }
+        else{
+          this.articlesByDate = result;
+        }
+        
         //Hämta populära artiklar
         fetch('http://localhost:3000/article/popularity/profession/' + this.$route.params.profession)
         .then(response => response.json())
@@ -156,11 +170,7 @@ export default {
 
 #article{
   width: 50%;
-}
-
-#article h3{
-  display: inline;
-  font-size: 14px;
+  padding-left: 10%;
 }
 
 @media screen and (max-width: 768px) {
