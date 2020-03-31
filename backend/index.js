@@ -1,7 +1,9 @@
+const crypto = require('crypto')
 const express = require('express');
 const cors = require('cors');
 const sqlite = require('sqlite');
 const moment = require('moment');
+const uuid = require('uuid/v4')
 
 const app = express();
 app.use(express.json());
@@ -122,17 +124,17 @@ app.get('/article/popularity/author/:author', (request, response) => {
 
 //===POST anrop===
 
-//Registrera nya användare, behöver användarnamn, lösenord och e-post
-app.post('/register', (request, response) => {
-    database.run('insert into users (username, password, userEmail, userCreatedDate) values (?, ?, ?, ?)', 
-    [request.body.username, request.body.password, request.body.userEmail, currentDate])
-    .then(() => {
-        response.send('En användare har skapats!');
-    })
-    .catch(e => {
-        response.status(409).send();
-    })
-})
+// Registrera nya användare, behöver användarnamn, lösenord och e-post
+// app.post('/register', (request, response) => {
+//     database.run('insert into users (username, password, userEmail, userCreatedDate) values (?, ?, ?, ?)', 
+//     [request.body.username, request.body.password, request.body.userEmail, currentDate])
+//     .then(() => {
+//         response.send('En användare har skapats!');
+//     })
+//     .catch(e => {
+//         response.status(409).send();
+//     })
+// })
 
 //Skapar nya artiklar, behöver värden för titel, content, datum, författare (användarens namn), en summary och ett profession
 //TODO: Måste fixa så author görs automatiskt och inte manuellt!
@@ -201,6 +203,74 @@ app.delete('/article/delete/:articleId', (request, response) => {
     database.run('delete from article where articleId=?', [request.params.articleId])
     .then(() => {
         response.send('Du tog bort en artikel!');
+    })
+})
+
+//=== Inloggning ===
+
+// Logga in 
+app.get('/secret', (request, response) => {
+    database.all(
+        'SELECT * FROM sessions WHERE token = ?',
+        [request.get('Cookie').split('=')[1]]
+    )
+        .then(sessions => {
+        if (sessions.length === 1) {
+        response.send('Hej ' + sessions[0].username)
+        } else {
+        response.status(401).send('Access denied!')
+        }
+    })
+})
+
+app.delete('/logout', (request, response) => {
+    database.run(
+        'DELETE FROM sessions WHERE token = ?;',
+        [request.get('Cookie').split('=')[1]])
+    .then(() => {
+        response.send('Du har loggats ut');
+    })
+})
+  
+app.post('/login', (request, response) => {
+const hash = crypto.createHash('sha256')
+hash.update(request.body.password)
+
+database.all(
+    'SELECT * FROM users WHERE username = ? AND password = ?',
+    [request.body.username, hash.digest('hex')]
+)
+    .then(users => {
+    if (users.length === 0) {
+        response.status(401).send()
+    } else {
+        const token = uuid()
+
+        database.run(
+        'INSERT INTO sessions VALUES (?, ?)',
+        [request.body.username, token]
+        )
+        .then(() => {
+            response.set('Set-Cookie', 'token=' + token)
+            response.send(`Du har loggat in!`)
+        })
+    }
+    })
+})
+// Registrera nya användare, behöver användarnamn, lösenord och e-post
+app.post('/register', (request, response) => {
+    
+    const hash = crypto.createHash('sha256')
+    hash.update(request.body.password)
+    
+    database.run(
+        'insert into users (username, password, userEmail, userCreatedDate) values (?, ?, ?, ?)', 
+        [request.body.username, hash.digest('hex'), request.body.userEmail, currentDate])
+    .then(() => {
+        response.send('En användare har skapats!');
+    })
+    .catch(e => {
+        response.status(409).send();
     })
 })
 
