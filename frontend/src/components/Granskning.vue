@@ -11,6 +11,7 @@
 
       <!--Användarloopen-->
       <div class="card mx-auto mt-4" style="min-width: 20rem; max-width: 20rem;" v-for="user in users" :key="user.username">
+        <!--Ger oss indexet av varje user, som kan användas utanför loopen i våra metoder-->
         <img class="card-img-top" style="width: 20rem; height: 20rem;" src="https://picsum.photos/200/300" alt="Card image cap"> <!-- TODO: Bild ska vara användarens profilbild -->
         <div class="card-body">
           <h5 class="card-title"><router-link :to='"/profil/" + user.username'>{{ user.profileName }}</router-link></h5>
@@ -43,14 +44,14 @@
                       <div class="form-group">
                         <div class="form-group mt-1">
                           <label for="exampleFormControlTextarea1">Innehåll:</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          <textarea class="form-control" rows="3"></textarea>
                         </div>
                       </div>
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tillbaka</button>
-                    <submit type="button" class="btn btn-primary" @click="sendMessage()">Skicka</submit>
+                    <button type="button" class="btn btn-primary" @click="sendMessage()">Skicka</button>
                   </div>
                 </div>
               </div>
@@ -112,7 +113,7 @@ export default {
     return {
       //Värden här!
       users: undefined,
-      currentModal: 1
+      noUsersFound: false
     }
   },
    created() {
@@ -123,7 +124,12 @@ export default {
       fetch('http://localhost:3000/users')
       .then(response => response.json())
       .then(result => {
-        this.users = result;
+        if(result.length===0){
+          this.noUsersFound = true;
+        }
+        else{
+          this.users = result;
+        }
         //Ska något mer ske efter fetchen är klar?
       })
         //Ska något hända medans den fetchar?
@@ -138,7 +144,7 @@ export default {
       alert("Användaren är verifierad! (not really)");
     },
     removeVerification(){
-      alert("Användaren är INTE verifierad! (not really)");
+      alert("Verifikationen är borttagen! (not really)");
     }
   }
 }
