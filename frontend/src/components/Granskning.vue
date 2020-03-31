@@ -25,37 +25,9 @@
         </ul>
         <div class="card-body mx-auto">
           <a class="card-link" href="#" data-toggle="modal" :data-target='"#verifyModal" + user.username'>Granska</a>
-          <a class="card-link" href="#" data-toggle="modal" :data-target='"#contactModal" + user.username'>Kontakta</a>
+          <a class="card-link" href="#" data-toggle="modal" @click="sendMessage(user.userEmail, user.profileName)">Kontakta</a>
           <a class="card-link" href="#" data-toggle="modal" :data-target='"#closeAccountModal" + user.username'>Stäng konto</a>
         </div>
-
-            <!-- Frågeformulär, TODO: skickas till user.userEmail -->
-            <div class="modal fade" :id='"contactModal" + user.username' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Kontakta {{ user.profileName }} (via {{ user.userEmail }})</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <div class="form-group mt-1">
-                          <label for="exampleFormControlTextarea1">Innehåll:</label>
-                          <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tillbaka</button>
-                    <button type="button" class="btn btn-primary" @click="sendMessage()">Skicka</button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <!-- Modal för att stänga konton -->
             <div class="modal fade" :id='"closeAccountModal" + user.username' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -68,11 +40,11 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Är du säker att du vill stänga {{ user.profileName }}s konto ({{ user.username }})?<p class="text-danger">Denna åtgärd går ej att ångra!</p>
+                    Är du säker att du vill stänga {{ user.profileName }}s konto ({{ user.username }})? Detta tar också bort alla artiklar skrivna av författaren. <p class="text-danger">Denna åtgärd går ej att ångra!</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tillbaka</button>
-                    <button type="button" class="btn btn-danger" @click="deleteUser()">Stäng konto</button>
+                    <button type="button" class="btn btn-danger" @click="deleteUser(user.username)">Stäng konto</button>
                   </div>
                 </div>
               </div>
@@ -93,8 +65,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tillbaka</button>
-                    <button v-if="user.userVerified===0" type="button" class="btn btn-success" @click="verifyUser()">Verifiera Konto</button>
-                    <button v-else type="button" class="btn btn-warning" @click="removeVerification()">Ta bort verifiering</button>
+                    <button v-if="user.userVerified===0" type="button" class="btn btn-success" @click="verifyUser(user.username)">Verifiera Konto</button>
+                    <button v-else type="button" class="btn btn-warning" @click="removeVerification(user.username)">Ta bort verifiering</button>
                   </div>
                 </div>
               </div>
@@ -134,18 +106,49 @@ export default {
       })
         //Ska något hända medans den fetchar?
     },
-    sendMessage(){
-      alert("Ditt meddelande är skickat! (not really)");
+    sendMessage(email, fullName){
+      //Öppnar e-post programmet på datorn, redo att skicka till användarens e-postadress och med en liten bas som ärende och innehåll
+      window.open('mailto:' + email + '?subject=Gällande ditt konto&body=Hej ' + fullName + ',');
     },
-    deleteUser(){
-      alert("Användaren är borttagen! (not really)");
+    deleteUser(username){
+      //Ta bort användaren
+      fetch('http://localhost:3000/users/delete/' + username, {
+      method: 'DELETE',
+      })
+      .then((response) => response.json())
+      //Ta också bort alla artiklar av samma användare
+      fetch('http://localhost:3000/article/delete/all/' + username, {
+      method: 'DELETE',
+      })
+      .then((response) => response.json())
+      window.location.reload();
     },
-    verifyUser(){
-      alert("Användaren är verifierad! (not really)");
+    //Används för att göra en användare verifierad
+    verifyUser(username){
+      fetch('http://localhost:3000/users/validate/' + username, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userVerified: 1 }),
+      })
+      .then((response) => response.json())
+      //Ladda om sidan när funktionen gått igenom
+      window.location.reload();
     },
-    removeVerification(){
-      alert("Verifikationen är borttagen! (not really)");
-    }
+    //Används för att göra en användare icke-verifierad
+    removeVerification(username){
+      fetch('http://localhost:3000/users/validate/' + username, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userVerified: 0 }),
+      })
+      .then((response) => response.json())
+      //Ladda om sidan när funktionen gått igenom
+      window.location.reload();
+    },
   }
 }
 </script>
