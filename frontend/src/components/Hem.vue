@@ -27,20 +27,24 @@
   </a>
 </div>
 
-    <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div class="d-flex flex-row flex-wrap">
       <div class="container">
         <h2 class="pt-4">Senaste Artiklar</h2>
       </div>
 
-      <div id="article" class="d-flex flex-row justify-content-center" v-for="article in articlesByDate" :key="article.articleId">
+      <!--Finns inga artiklar skriver den ut ett meddelande till användaren-->
+      <div class="d-flex justify-content-center" style="width: 100%;" v-if="noArticlesFound===true"><h3>Hittade inga artiklar!</h3></div>
+
+      <!--Artikel Loop-->
+      <div id="article" class="d-flex flex-row" v-for="article in articlesByDate" :key="article.articleId">
         <div>
           <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
-          <h3>Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
-          <h3>Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
-          <h3>Datum: {{ article.dateCreated }}</h3>
+          <h3 style="display: inline; font-size: 14px;">Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Datum: {{ article.dateCreated }}</h3>
           <p>{{ article.summary }}</p>
         </div>
       </div>
@@ -49,52 +53,58 @@
         <h2 class="pt-4">Mest Populära Artiklar</h2>
       </div>
 
-      <div id="article" class="d-flex flex-row justify-content-center" v-for="article in articlesByPopularity" :key="article.articleId">
+      <!--Finns inga artiklar skriver den ut ett meddelande till användaren-->
+      <div class="d-flex justify-content-center" style="width: 100%;" v-if="noArticlesFound===true"><h3>Hittade inga artiklar!</h3></div>
+
+      <!--Artikel Loop-->
+      <div id="article" class="d-flex flex-row" v-for="article in articlesByPopularity" :key="article.articleId">
         <div>
           <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
-          <h3>Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
-          <h3>Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
-          <h3>Datum: {{ article.dateCreated }}</h3>
+          <h3 style="display: inline; font-size: 14px;">Författare: <router-link :to='"/profil/" + article.author'>{{ article.author }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Yrkeskategori: <router-link :to='"/yrke/" + article.profession'>{{ article.profession }}</router-link> | </h3>
+          <h3 style="display: inline; font-size: 14px;">Datum: {{ article.dateCreated }}</h3>
           <p>{{ article.summary }}</p>
         </div>
       </div>
 
     </div>
-    <!--Yrkeskategorier TODO: Dessa måste göras om, dem är för exakt gjorda. Måste vara enklare att ändra texten eller bilden  och att det fortfarande blir rätt!-->
-    <!--<div class="container">
+
+    <!--Yrkeskategorier-->
+    <div class="container">
       <h2 class="pt-4">Artiklar Efter Yrke</h2>
     </div>
-    <div class="container">
-      <div id="card-links" class="card-columns">
-        <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text"><router-link to="/yrke/IT">IT</router-link></h2>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
-        </div>
-        <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
-        </div>
-        <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
-        </div>
-        <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
-        </div>
-        <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
-        </div>
-        <div class="card-body text-center" style="width: 18rem;">
-          <h2 id="card-text" class="card-text"><router-link to="/yrke">IT</router-link></h2>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="IT">
-        </div>
+
+    <div class="container d-flex justify-content-center">
+
+      <div style="margin: 30px;">
+        <router-link to="/yrke/Bygg"><button type="button" class="btn btn-info">Bygg</button></router-link>
       </div>
-    </div>-->
+
+      <div style="margin: 30px;">
+        <router-link to="/yrke/Drift"><button type="button" class="btn btn-info">Drift</button></router-link>
+      </div>
+
+      <div style="margin: 30px;">
+        <router-link to="/yrke/IT"><button type="button" class="btn btn-info">IT</button></router-link>
+      </div>
+
+      <div style="margin: 30px;">
+        <router-link to="/yrke/Kultur"><button type="button" class="btn btn-info">Kultur</button></router-link>
+      </div>
+
+      <div style="margin: 30px;">
+        <router-link to="/yrke/Medicin"><button type="button" class="btn btn-info">Medicin</button></router-link>
+      </div>
+      
+      <div style="margin: 30px;">
+        <router-link to="/yrke/Naturbruk"><button type="button" class="btn btn-info">Naturbruk</button></router-link>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
@@ -104,7 +114,8 @@ export default {
     return {
       //Värden här!
       articlesByDate: undefined,
-      articlesByPopularity: undefined
+      articlesByPopularity: undefined,
+      noArticlesFound: false
     }
   },
    created() {
@@ -116,7 +127,12 @@ export default {
       fetch('http://localhost:3000/article/all')
       .then(response => response.json())
       .then(result => {
-        this.articlesByDate = result;
+        if(result.length===0){
+          this.noArticlesFound = true;
+        }
+        else{
+          this.articlesByDate = result;
+        }
         //Hämta populära artiklar
         fetch('http://localhost:3000/article/popularity/all')
         .then(response => response.json())
@@ -167,28 +183,18 @@ export default {
   text-shadow: 2px 2px 4px #000000;
 }
 
-#card-text{
-  position: absolute;
-  padding-left: 3.5em;
-  padding-top: 1.8em;
+button{
+  width: 100px;
 }
 
-#card-text a{
+button a{
   color: white;
-  text-shadow: 2px 2px 4px #000000;
-}
-
-#card-text a:hover{
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 #article{
   width: 50%;
-}
-
-#article h3{
-  display: inline;
-  font-size: 14px;
+  padding-left: 10%;
 }
 
 @media screen and (max-width: 768px) {

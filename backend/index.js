@@ -137,7 +137,6 @@ app.get('/article/popularity/author/:author', (request, response) => {
 // })
 
 //Skapar nya artiklar, behöver värden för titel, content, datum, författare (användarens namn), en summary och ett profession
-//TODO: Måste fixa så author görs automatiskt och inte manuellt!
 app.post('/article/new', (request, response) => {
     database.run('insert into article (title, content, dateCreated, author, summary, profession) values (?, ?, ?, ?, ?, ?)', 
     [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary, request.body.profession])
@@ -160,13 +159,22 @@ app.put('/users/edit/:username', (request, response) => {
     })
 })
 
-//ÄNdra profilvärden baserat på användarnamnet
+//Ändra profilvärden baserat på användarnamnet
 app.put('/profile/edit/:username', (request, response) => {
     console.log(request.body)
     database.run('update users set profileName=?, profileDescription=?, profilePicture=?, profileMerits=? where username=?', 
     [request.body.profileName, request.body.profileDescription, request.body.profilePicture, request.body.profileMerits, request.params.username])
     .then(() => {
         response.send('Du uppdaterade en användare!');
+    })
+})
+
+//Uppdatera en användares verifikation
+app.put('/users/validate/:username', (request, response) => {
+    database.run('UPDATE users SET userVerified=? where username=?', 
+    [request.body.userVerified, request.params.username])
+    .then(() => {
+        response.send(`${request.params.username}s verifikation uppdaterades!`);
     })
 })
 
@@ -206,6 +214,7 @@ app.delete('/article/delete/:articleId', (request, response) => {
     })
 })
 
+<<<<<<< HEAD
 //=== Inloggning ===
 
 // Logga in 
@@ -271,6 +280,13 @@ app.post('/register', (request, response) => {
     })
     .catch(e => {
         response.status(409).send();
+=======
+//Ta bort artiklar baserat på artikelns författare
+app.delete('/article/delete/all/:author', (request, response) => {
+    database.run('delete from article where author=?', [request.params.author])
+    .then(() => {
+        response.send('Du tog bort en artikel!');
+>>>>>>> 4349d395cdee4e1894b4fe2b159544405c453cac
     })
 })
 
