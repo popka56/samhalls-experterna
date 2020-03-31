@@ -214,7 +214,6 @@ app.delete('/article/delete/:articleId', (request, response) => {
     })
 })
 
-<<<<<<< HEAD
 //=== Inloggning ===
 
 // Logga in 
@@ -280,13 +279,15 @@ app.post('/register', (request, response) => {
     })
     .catch(e => {
         response.status(409).send();
-=======
+    })
+})
+
+
 //Ta bort artiklar baserat på artikelns författare
 app.delete('/article/delete/all/:author', (request, response) => {
     database.run('delete from article where author=?', [request.params.author])
     .then(() => {
         response.send('Du tog bort en artikel!');
->>>>>>> 4349d395cdee4e1894b4fe2b159544405c453cac
     })
 })
 
