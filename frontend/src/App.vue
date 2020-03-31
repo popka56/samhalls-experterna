@@ -10,8 +10,15 @@
               <h1 class="text-white">Xpert</h1>
             </router-link>
           </Span></div>
-        <div v-on:click="isHidden = !isHidden" class="col-1 d-flex align-items-center justify-content-around"><a
-            href="#"><i id="ham-btn" class="fas fa-bars"></i></a></div>
+
+          <!-- Search form -->
+        <div id="srch" class="col-1 offset-col-1 d-flex align-items-center justify-between">
+            <input class="form-control" type="text" placeholder="Sök artiklar">
+            <i class="fas fa-search mx-2"></i>
+        </div>
+        
+        <div v-on:click="isHidden = !isHidden" class="col-1 d-flex align-items-center justify-content-around">
+          <a href="#"><i id="ham-btn" class="fas fa-bars"></i></a></div>
       </div>
     </header>
     <!-- Submenu -->
