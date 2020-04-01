@@ -11,7 +11,7 @@
       <!--Artikel loopen-->
       <div id="article" class="d-flex flex-row" v-for="article in articles" :key="article.articleId">
         <div>
-          <img src="..\..\..\backend\uploadedFiles\defaultProfilePicture.jpg" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
+          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
@@ -24,7 +24,7 @@
       
   </div>
 
-    <!--Test för att ladda upp filer-->
+    <!--Behövs för att ladda upp filer-->
     <div>
       <input type="file" @change="onFileSelected">
       <p>{{ message }}</p>
@@ -44,7 +44,7 @@ export default {
       articles: undefined,
       noArticlesFound: false,
 
-      //För test av filuppladdning!
+      //För filuppladdningen!
       selectedFile: null,
       message: ''
     }
@@ -68,7 +68,8 @@ export default {
         //Ska något hända medans den fetchar?
     },
 
-    //Test för att ladda upp filer
+    //Filuppladdning
+    //Första metoden sparar filen som läggs in och kollar om den är acceptabel, samt ger feedback på detta till användaren
     onFileSelected(event){
       //Hämtar filen användaren lagt upp
       this.selectedFile = event.target.files[0];
@@ -81,13 +82,16 @@ export default {
         this.message = 'Bilden får inte vara större än 500kb!'
       }
     },
+    //Denna metod ger bilden till backenden med hjälp av axios i frontend, och sedan multer i backenden
     async onUpload(){
       const formData = new FormData();
       formData.append('file', this.selectedFile);
       try{
+        //Anropet den använder i backend står här (byt ut admin mot användarens användarnamn (ex: user.username) på profilsidan)
         await axios.put('http://localhost:3000/upload/verification/admin', formData)
         console.log('Fil uppladdad!');
       }
+      //Gick det inte så ge error i konsolen (för oss utvecklare)
       catch(error){
         console.log(error);
       }

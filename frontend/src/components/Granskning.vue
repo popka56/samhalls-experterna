@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container"> <!--TODO: Allt detta ska vara inanför en v-if som kollar om du är inloggad på admin kontot!-->
       <h2 class="pt-4">Alla Användare</h2>
     </div>
 
@@ -12,7 +12,7 @@
       <!--Användarloopen-->
       <div class="card mx-auto mt-4" style="min-width: 20rem; max-width: 20rem;" v-for="user in users" :key="user.username">
         <!--Ger oss indexet av varje user, som kan användas utanför loopen i våra metoder-->
-        <img class="card-img-top" style="width: 20rem; height: 20rem;" src="https://picsum.photos/200/300" alt="Card image cap"> <!-- TODO: Bild ska vara användarens profilbild -->
+        <img class="card-img-top" style="width: 20rem; height: 20rem;" :src='"/img/" + user.profilePicture' alt="Card image cap"> <!-- TODO: Bild ska vara användarens profilbild -->
         <div class="card-body">
           <h5 class="card-title"><router-link :to='"/profil/" + user.username'>{{ user.profileName }}</router-link></h5>
           <p class="card-text">Användarnamn: {{ user.username }}</p>
@@ -24,7 +24,7 @@
           <li v-else class="list-group-item text-success">Verifierad: Ja</li>
         </ul>
         <div class="card-body mx-auto">
-          <a class="card-link" href="#" data-toggle="modal" :data-target='"#verifyModal" + user.username'>Granska</a>
+          <a class="card-link" href="#" data-toggle="modal" @click="getLink(user.userUploadedFile)" :data-target='"#verifyModal" + user.username'>Granska</a>
           <a class="card-link" href="#" data-toggle="modal" @click="sendMessage(user.userEmail, user.profileName)">Kontakta</a>
           <a class="card-link" href="#" data-toggle="modal" :data-target='"#closeAccountModal" + user.username'>Stäng konto</a>
         </div>
@@ -61,7 +61,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <img v-if="user.userHasUploadedVerification===1" :src='"../../../backend/uploadedFiles/" + user.userUploadedFile'>
+                    <img id="verificationImage" v-if="user.userHasUploadedVerification===1" :src='"/img/" + user.userUploadedFile'>
                     <p v-else>Användaren har inte skickat in något för granskning.</p>
                   </div>
                   <div class="modal-footer">
@@ -86,7 +86,8 @@ export default {
     return {
       //Värden här!
       users: undefined,
-      noUsersFound: false
+      noUsersFound: false,
+      fileLink: null
     }
   },
    created() {
@@ -106,6 +107,9 @@ export default {
         //Ska något mer ske efter fetchen är klar?
       })
         //Ska något hända medans den fetchar?
+    },
+    getLink(fileName){
+      this.fileLink = "../../../backend/uploadedFiles/" + fileName;
     },
     sendMessage(email, fullName){
       //Öppnar e-post programmet på datorn, redo att skicka till användarens e-postadress och med en liten bas som ärende och innehåll
@@ -157,5 +161,15 @@ export default {
 <style scoped>
 .card{
   width: 30%;
+}
+
+#verificationImage{
+  max-width: 48rem;
+}
+
+@media screen and (max-width: 768px) {
+  #verificationImage{
+    max-width: 90%;
+  }
 }
 </style>

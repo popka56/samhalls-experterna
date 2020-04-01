@@ -12,7 +12,7 @@ app.use(cors());
 
 //===Egna värden att använda till våra anrop===
 
-
+//===Filuppladdning Start===
 //Bestämmer vilka filformat vi accepterar vid filuppladdning
 const fileFilter = function(request, file, callback){
     const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
@@ -27,7 +27,7 @@ const fileFilter = function(request, file, callback){
 }
 //Multer väljer en mapp där vi lägger filer uppladdade av användare, samt hämtar krav för filen
 const upload = multer({ storage: multer.diskStorage({
-        destination: './uploadedFiles', //Vart filen sparas
+        destination: '../frontend/public/img', //Vart filen sparas
         filename: (req, file, cb) => { 
             cb(null, Date.now() + "-" + file.originalname); //Vad filnamnet blir när den läggs i mappen
         },
@@ -37,6 +37,7 @@ const upload = multer({ storage: multer.diskStorage({
         }
     })
 })
+//===Filuppladdning Slut===
 
 //Formatera moment att vara svensk
 moment.locale('sv');
@@ -177,6 +178,8 @@ app.post('/article/new', (request, response) => {
 
 //===PUT anrop===
 
+
+//===Filuppladdning Start===
 //Ladda upp en fil till servern för granskning
 app.put('/upload/verification/:username', upload.single('file'), (request, response) => {
     database.run('UPDATE users SET userHasUploadedVerification=?, userUploadedFile=?  where username=?', 
@@ -194,6 +197,7 @@ app.put('/upload/profilePicture/:username', upload.single('file'), (request, res
         response.json({ file: request.file });
     })
 })
+//===Filuppladdning Slut===
 
 //Ändra användarens e-mail och lösenord baserat på användarnamn
 app.put('/users/edit/:username', (request, response) => {
