@@ -166,8 +166,8 @@ app.get('/article/popularity/author/:author', (request, response) => {
 
 //Skapar nya artiklar, behöver värden för titel, content, datum, författare (användarens namn), en summary och ett profession
 app.post('/article/new', (request, response) => {
-    database.run('insert into article (title, content, dateCreated, author, summary, profession) values (?, ?, ?, ?, ?, ?)', 
-    [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary, request.body.profession])
+    database.run('insert into article (title, content, dateCreated, author, authorPicture, summary, profession) values (?, ?, ?, ?, ?, ?, ?)', 
+    [request.body.title, request.body.content, currentDate, request.body.author, request.body.authorPicture, request.body.summary, request.body.profession])
     .then(() => {
         response.send('Ett nytt inlägg har skapats!');
     })
