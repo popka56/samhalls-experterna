@@ -61,7 +61,8 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Här kommer användarens fil visas, eller länk dit. Vad vi nu använder. Jag vet inte hur det ska göras exakt men denna ruta fungerar nog bra för att granska innehållet i alla fall och sedan klicka på att verifiera kontot!
+                    <img v-if="user.userHasUploadedVerification===1" :src='"../../../backend/uploadedFiles/" + user.userUploadedFile'>
+                    <p v-else>Användaren har inte skickat in något för granskning.</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tillbaka</button>

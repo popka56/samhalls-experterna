@@ -11,7 +11,7 @@
       <!--Artikel loopen-->
       <div id="article" class="d-flex flex-row" v-for="article in articles" :key="article.articleId">
         <div>
-          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
+          <img src="..\..\..\backend\uploadedFiles\defaultProfilePicture.jpg" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
@@ -23,16 +23,30 @@
       </div>
       
   </div>
+
+    <!--Test för att ladda upp filer-->
+    <div>
+      <input type="file" @change="onFileSelected">
+      <p>{{ message }}</p>
+      <button @click="onUpload">Ladda upp</button>
+    </div>
+
 </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data: function(){
     return {
       //Värden här!
       articles: undefined,
-      noArticlesFound: false
+      noArticlesFound: false,
+
+      //För test av filuppladdning!
+      selectedFile: null,
+      message: ''
     }
   },
    created() {
@@ -52,7 +66,34 @@ export default {
         //Ska något mer ske efter fetchen är klar?
       })
         //Ska något hända medans den fetchar?
+    },
+
+    //Test för att ladda upp filer
+    onFileSelected(event){
+      //Hämtar filen användaren lagt upp
+      this.selectedFile = event.target.files[0];
+      //Kollar så bilden är av rätt filformat och storlek
+      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+      if(!allowedTypes.includes(this.selectedFile.type)){
+        this.message = 'Bilden måste vara av filformatet .jpeg, .jpg eller .png!'
+      }
+      if(this.selectedFile.size > 500000){
+        this.message = 'Bilden får inte vara större än 500kb!'
+      }
+    },
+    async onUpload(){
+      const formData = new FormData();
+      formData.append('file', this.selectedFile);
+      try{
+        await axios.put('http://localhost:3000/upload/verification/admin', formData)
+        console.log('Fil uppladdad!');
+      }
+      catch(error){
+        console.log(error);
+      }
+
     }
+
   }
 }
 </script>
