@@ -38,9 +38,9 @@
             <li><router-link to="/yrke/Bygg"><a>Bygg</a></router-link></li>
             <li><router-link to="/yrke/Drift"><a>Drift</a></router-link></li>
             <li><router-link to="/yrke/IT"><a>IT</a></router-link></li>
-            <li><router-link to="/yrke/Bygg"><a>Kultur</a></router-link></li>
-            <li><router-link to="/yrke/Drift"><a>Medicin</a></router-link></li>
-            <li><router-link to="/yrke/IT"><a>Naturbruk</a></router-link></li>
+            <li><router-link to="/yrke/Kultur"><a>Kultur</a></router-link></li>
+            <li><router-link to="/yrke/Medicin"><a>Medicin</a></router-link></li>
+            <li><router-link to="/yrke/Naturbruk"><a>Naturbruk</a></router-link></li>
           </ul>
         </div> |
         <button v-if="!isLoggedIn" class="my-button" data-toggle="modal" data-target="#modalLoginForm">Logga in</button>
