@@ -11,8 +11,12 @@
             </router-link>
           </Span></div>
 
+         
+
+
+
           <!-- Search form -->
-        <div id="srch" class="col-1 offset-col-1 d-flex align-items-center justify-between">
+        <div id="srch" class="col-2 offset-col-1 d-flex align-items-center justify-between">
             <input class="form-control" type="text" placeholder="Sök artiklar">
             <i class="fas fa-search mx-2"></i>
         </div>
@@ -29,11 +33,52 @@
         <router-link to="/hem"><a>Hem</a></router-link> |
         <!-- <router-link to="/om">Om oss</router-link> | -->
         <router-link to="/artiklar">Alla Artiklar</router-link> |
-        <router-link to="/yrke/IT">Artiklar: IT</router-link>
+        <router-link to="/yrke/IT">Artiklar: IT</router-link> |
+        <button v-if="!isLoggedIn" class="my-button" data-toggle="modal" data-target="#modalLoginForm">Logga in</button>
+        <button v-else type="button" key="isLoggedIn" class="my-button" @click="logOut">Logga ut: {{ isLoggedIn.requestUserName }}</button>
         <!-- <router-link to="/sok">Sök</router-link> | -->
         <!-- <router-link to="/profil">Profil</router-link> -->
       </div>
     </div>
+
+
+     <!-- Inloggning och utloggning -->
+    
+      <div class="container">
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body mx-3">
+                <form v-if="!isLoggedIn">
+                  <div class="form-group">
+                    <label for="inputUsername">Användarnamn</label>
+                    <input v-model="username" type="username" class="form-control" id="InputUsername" aria-describedby="usernameHelp" placeholder="Skriv in användarnamn">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input v-model="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Lösenord">
+                  </div>
+                </form>
+                <p v-else>Du har loggat in!</p>
+              </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button v-if="!isLoggedIn" class="btn btn-default" @click="logIn">Logga in</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      
+  
+
+
 
     <div class="router-view">
       <router-view />
@@ -66,12 +111,46 @@
 </template>
 <script>
   export default {
-    data: function () {
-      return {
-        isHidden: true
-      }
+  data: function () {
+    return {
+      isHidden: true,
+      username: undefined,
+      password: undefined,
+    }
+  },
+  computed: {
+      isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+  mounted () {
+    this.$store.dispatch('getAuthenticator')
+  },
+  methods:{
+    logIn() {
+        fetch('/api/login/', {
+          body: JSON.stringify({
+          username: this.username,
+          password: this.password
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      })
+      .then(() => {this.authenticate()})      
     },
+
+    logOut(){
+      this.$store.dispatch('logOut')
+    },
+
+    authenticate () {
+      this.$store.dispatch('getAuthenticator')
+    }
   }
+}
+
 </script>
 <style>
   /*Global styling*/
@@ -108,6 +187,12 @@
 
   footer li>a {
     color: whitesmoke !important;
+  }
+  .my-button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: whitesmoke;
   }
 </style>
 

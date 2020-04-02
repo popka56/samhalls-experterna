@@ -9,6 +9,7 @@ import Sok from '../components/Sok.vue'
 import Login from '../components/Login.vue'
 import Tos from '../components/Tos.vue'
 import Granskning from '../components/Granskning.vue'
+import Editor from '../components/Editor.vue'
 
 Vue.use(VueRouter)
 
@@ -61,6 +62,11 @@ const routes = [
     path: '/granskning',
     name: 'Granskning',
     component: Granskning
+  },
+  {
+    path: '/editor/:user',
+    name: 'Editor',
+    component: Editor
   }
 ]
 
