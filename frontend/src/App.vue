@@ -15,11 +15,11 @@
 
 
 
-          <!-- Search form -->
+        <!-- Search form
         <div id="srch" class="col-2 offset-col-1 d-flex align-items-center justify-between">
             <input class="form-control" type="text" placeholder="Sök artiklar">
             <i class="fas fa-search mx-2"></i>
-        </div>
+        </div> -->
         
         <div v-on:click="isHidden = !isHidden" class="col-1 d-flex align-items-center justify-content-around">
           <a href="#"><i id="ham-btn" class="fas fa-bars"></i></a></div>
@@ -27,13 +27,22 @@
     </header>
     <!-- Submenu -->
     <div id="nav" v-show="!isHidden">
-      <!--Här är vår globala header-->
-      <!--  Texten centreras inte ordentligt? -->
+      <!--Här är vår navigation-->
       <div id="menu-items" class="col d-flex justify-content-around">
-        <router-link to="/hem"><a>Hem</a></router-link> |
+        <button class="my-button"><router-link to="/hem"><a class="text-white">Hem</a></router-link></button> |
         <!-- <router-link to="/om">Om oss</router-link> | -->
-        <router-link to="/artiklar">Alla Artiklar</router-link> |
-        <router-link to="/yrke/IT">Artiklar: IT</router-link> |
+        <div class="dropdown">
+          <button class="btn text-white dropdown-toggle" type="button" data-toggle="dropdown">Artiklar Efter Yrke
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><router-link to="/yrke/Bygg"><a>Bygg</a></router-link></li>
+            <li><router-link to="/yrke/Drift"><a>Drift</a></router-link></li>
+            <li><router-link to="/yrke/IT"><a>IT</a></router-link></li>
+            <li><router-link to="/yrke/Bygg"><a>Kultur</a></router-link></li>
+            <li><router-link to="/yrke/Drift"><a>Medicin</a></router-link></li>
+            <li><router-link to="/yrke/IT"><a>Naturbruk</a></router-link></li>
+          </ul>
+        </div> |
         <button v-if="!isLoggedIn" class="my-button" data-toggle="modal" data-target="#modalLoginForm">Logga in</button>
         <button v-else type="button" key="isLoggedIn" class="my-button" @click="logOut">Logga ut: {{ isLoggedIn.requestUserName }}</button>
         <!-- <router-link to="/sok">Sök</router-link> | -->
@@ -152,6 +161,8 @@
 }
 
 </script>
+
+
 <style>
   /*Global styling*/
 
@@ -194,6 +205,8 @@
     background: none;
     color: whitesmoke;
   }
+
+
 </style>
 
 <style scoped>
