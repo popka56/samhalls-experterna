@@ -1,15 +1,16 @@
 <template>
   <div class="container">
     <template v-if="isLoggedIn">
-      <template v-if="isLoggedIn.requestUserName === $route.params.user">
-        <div class="col 8">
+      <template v-if="isLoggedIn.requestUserName === $route.params.username">
+        <div class="col-8 offset-2">
         <form>
-          <input placeholder="Visningsnamn" v-model="profileName">
-          <input placeholder="Beskrivning" v-model="profileDescription">
-          <input placeholder="Meriter" v-model="profileMerits">
-          <input placeholder="Jobb" v-model="profileJob">
-          <input placeholder="Utbildning" v-model="profileEducation">
-          <input placeholder="Profilbild" v-model="profilePicture">
+          <input  placeholder="Visningsnamn" v-model="profileName">
+          <textarea  placeholder="Beskrivning" v-model="profileDescription"></textarea>
+          <input  placeholder="Meriter" v-model="profileMerits">
+          <input  placeholder="Jobb" v-model="profileJob">
+          <input  placeholder="Utbildning" v-model="profileEducation">
+          <input  placeholder="Profilbild" v-model="profilePicture">
+          <button type="button" class="btn btn-secondary" @click="editProfile">Spara ändringar</button>
         </form>
         </div>
       </template>
@@ -26,7 +27,8 @@ export default {
       profileName: undefined,
       profileMerits: undefined,
       profileEducation: undefined,
-      profileJob: undefined
+      profileJob: undefined,
+      
     }
   },
     computed: {
@@ -38,25 +40,25 @@ export default {
       this.$store.dispatch('getAuthenticator')
     },  
     methods: {
-    editProfile() {
-      fetch('/api/profile/edit/' + this.$route.params.user, {
-        body: JSON.stringify({
+    editProfile(){
+      console.log(this.$route.params.username)
+      fetch('/api/profile/edit/' + this.$route.params.username, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
         profilePicture: this.profilePicture,
         profileDescription: this.profileDescription,
         profileName: this.profileName,
         profileMerits: this.profileMerits,
         profileEducation: this.profileEducation,
         profileJob: this.profileJob,
-      }),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'PUT'
+        }),
       })
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-      })
+      .then((response) => response.json())
+      //Ladda om sidan när funktionen gått igenom
+      // window.location.reload();
     }
   }
 }

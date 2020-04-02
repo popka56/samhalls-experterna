@@ -64,7 +64,7 @@ const routes = [
     component: Granskning
   },
   {
-    path: '/editor/:user',
+    path: '/editor/:username',
     name: 'Editor',
     component: Editor
   }

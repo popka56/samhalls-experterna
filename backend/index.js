@@ -151,19 +151,6 @@ app.get('/article/popularity/author/:author', (request, response) => {
 })
 
 //===POST anrop===
-
-// Registrera nya användare, behöver användarnamn, lösenord och e-post
-// app.post('/register', (request, response) => {
-//     database.run('insert into users (username, password, userEmail, userCreatedDate) values (?, ?, ?, ?)', 
-//     [request.body.username, request.body.password, request.body.userEmail, currentDate])
-//     .then(() => {
-//         response.send('En användare har skapats!');
-//     })
-//     .catch(e => {
-//         response.status(409).send();
-//     })
-// })
-
 //Skapar nya artiklar, behöver värden för titel, content, datum, författare (användarens namn), en summary och ett profession
 app.post('/article/new', (request, response) => {
     database.run('insert into article (title, content, dateCreated, author, authorPicture, summary, profession) values (?, ?, ?, ?, ?, ?, ?)', 

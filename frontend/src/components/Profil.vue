@@ -14,34 +14,10 @@
               </div>
             </div>
           </div >
-            <template v-if="isLoggedIn">
-              <div v-if="isLoggedIn.requestUserName === $route.params.user" class="col-md-7 col-sm-12 my-col">
-                <form>
-                  <div class="row">
-                    <div class="col-12 pt-3">
-                      <input v-model="profileName" class="col-12">
-                      <textarea v-model="profileDescription" class="col-12"></textarea>
-                      <div class="col-12 d-flex justify-content-end p-0">
-                        <button class="btn btn-secondary" @click="editProfile">Spara</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div v-else>
-                <div class="col-md-7 col-sm-12 my-col pt-3">
-                  <h4 class="mb-1">{{ profile[0].profileName }}</h4>
-                  <p class="text-muted card-text">{{ profile[0].profileDescription }}</p>
-              </div>
-              </div>
-            </template>
-            <template v-else>
               <div class="col-md-7 col-sm-12 my-col pt-3">
                 <h4 class="mb-1">{{ profile[0].profileName }}</h4>
                 <p class="text-muted card-text">{{ profile[0].profileDescription }}</p>
-              </div>
-            </template>
-                         
+              </div>                        
         </div>
         
 
@@ -118,7 +94,7 @@
             <div class="bg-light col-md-3 col-sm-12 my-col align-self-start offset-md-1 pl-0 pr-0" id="sidebar">
               <div id="introduktion">
                 <div class="col-12 pl-0 pr-0">
-                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <h4 class="mb-0">{{ profile[0].profileName }}</h4>
                   <p>{{ profile[0].profileMerits }}</p>
                 </div>
                 <div class="col-12 pl-0 pr-0">
@@ -141,6 +117,9 @@
 
               <div class="d-flex justify-content-center">
                 <a class="card-link" href="#" data-toggle="modal" @click="sendMessage(user.userEmail, user.profileName)">Kontakta</a>
+              </div>
+              <div class="d-flex justify-content-center">
+                <router-link to="/artiklar">Alla Artiklar</router-link>
               </div>
             </div>
 
