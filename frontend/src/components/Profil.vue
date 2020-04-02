@@ -13,13 +13,35 @@
                 <a href="https://placeholder.com"><img class="img-thumbnail rounded-circle" id="profile-img" src="https://www.gamereactor.se/media/forum/se/15294984_18.jpg"></a>
               </div>
             </div>
-          
-          </div>
-            <div class="col-md-7 col-sm-12 my-col pt-3" >
-              <!-- {{ profile }} -->
-              <h4 class="mb-1">{{ profile[0].profileName }}</h4>
-              <p class="text-muted card-text">{{ profile[0].profileDescription }}</p>
-            </div>
+          </div >
+            <template v-if="isLoggedIn">
+              <div v-if="isLoggedIn.requestUserName === $route.params.user" class="col-md-7 col-sm-12 my-col">
+                <form>
+                  <div class="row">
+                    <div class="col-12 pt-3">
+                      <input v-model="profileName" class="col-12">
+                      <textarea v-model="profileDescription" class="col-12"></textarea>
+                      <div class="col-12 d-flex justify-content-end p-0">
+                        <button class="btn btn-secondary" @click="editProfile">Spara</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div v-else>
+                <div class="col-md-7 col-sm-12 my-col pt-3">
+                  <h4 class="mb-1">{{ profile[0].profileName }}</h4>
+                  <p class="text-muted card-text">{{ profile[0].profileDescription }}</p>
+              </div>
+              </div>
+            </template>
+            <template v-else>
+              <div class="col-md-7 col-sm-12 my-col pt-3">
+                <h4 class="mb-1">{{ profile[0].profileName }}</h4>
+                <p class="text-muted card-text">{{ profile[0].profileDescription }}</p>
+              </div>
+            </template>
+                         
         </div>
         
 
@@ -29,9 +51,13 @@
           <div class="col-11 my-col mt-2 ">
             <h4 class="pl-2" id="title">Inlägg</h4>
           </div>
-          <div class="col-1 d-flex align-self-center">
-            <button @click="onClick" id="newPost">+</button>
-          </div>
+          <template v-if="isLoggedIn">
+            <template v-if="isLoggedIn.requestUserName === $route.params.user">
+              <div class="col-1 d-flex align-self-center">
+                <button @click="onClick" id="newPost">+</button>
+              </div>
+            </template>
+          </template>
         </div>
       
       <div v-if="showEditor === true">
@@ -87,6 +113,40 @@
 
       </div>
         <!-- Introduktion -->
+        <template v-if="isLoggedIn">
+          <template v-if="isLoggedIn.requestUserName === $route.params.user">
+            <div class="bg-light col-md-3 col-sm-12 my-col align-self-start offset-md-1 pl-0 pr-0" id="sidebar">
+              <div id="introduktion">
+                <div class="col-12 pl-0 pr-0">
+                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <p>{{ profile[0].profileMerits }}</p>
+                </div>
+                <div class="col-12 pl-0 pr-0">
+                  <table id="introduktion-table" >
+                    <tr>
+                      <th>Arbetsplats:</th>
+                    </tr>
+                    <tr>
+                      <td>{{ profile[0].profileJob }}</td>
+                    </tr>
+                    <tr>
+                      <th>Utbildning:</th>
+                    </tr>
+                    <tr>
+                      <td>{{ profile[0].profileEducation }}</td>
+                    </tr>
+                  </table>
+               </div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <a class="card-link" href="#" data-toggle="modal" @click="sendMessage(user.userEmail, user.profileName)">Kontakta</a>
+              </div>
+            </div>
+
+          </template>
+        </template>
+        <template v-else>
         <div class="bg-light col-md-3 col-sm-12 my-col align-self-start offset-md-1 pl-0 pr-0" id="sidebar">
           <div id="introduktion">
             <div class="col-12 pl-0 pr-0">
@@ -111,46 +171,11 @@
             </div>
           </div>
 
-          <div>
-            <!-- Button trigger modal -->
-            <!-- <div class="col-12 d-flex justify-content-center p-2">
-              <button type="button" class="my-button" data-toggle="modal" data-target="#exampleModal">
-                Ställ en fråga
-              </button>
-            </div> -->
-            <!-- Frågeformulär -->
-            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Fråga</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label class="mb-0" for="exampleFormControlInput1">Din mail</label>
-                        <p class="text-muted mb-0">Om du vill bli notifierad vid svar</p>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="namn@example.com">
-                        <div class="form-group mt-1">
-                          <label for="exampleFormControlTextarea1">Ställ din fråga</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Stäng</button>
-                    <submit type="button" class="btn btn-primary">Skicka</submit>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
+          <div class="d-flex justify-content-center">
+            <a class="card-link" href="#" data-toggle="modal" @click="sendMessage(user.userEmail, user.profileName)">Kontakta</a>
           </div>
         </div>
+        </template>
     </div>
   </div> 
   
@@ -174,9 +199,17 @@ export default {
      this.getProfile();
      this.getArticles();
    },
+   computed: {
+      isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+  mounted() {
+    this.$store.dispatch('getAuthenticator')
+  },
   methods:{
     getProfile(){
-      fetch('http://localhost:3000/users/' + this.$route.params.user)
+      fetch('/api/users/' + this.$route.params.user)
       .then(response => response.json())
       .then(result => {
         this.profile = result;
@@ -186,7 +219,7 @@ export default {
         //Ska något hända medans den fetchar?
     },
     getArticles(){
-      fetch('http://localhost:3000/article/author/' + this.$route.params.user)
+      fetch('/api/article/author/' + this.$route.params.user)
       .then(response => response.json())
       .then(result => {
         this.articles = result;
@@ -197,8 +230,12 @@ export default {
     onClick() {
       this.showEditor = !this.showEditor;
     },
+    sendMessage(email, fullName){
+      //Öppnar e-post programmet på datorn, redo att skicka till användarens e-postadress och med en liten bas som ärende och innehåll
+      window.open('mailto:' + email + '?subject=Gällande ditt konto&body=Hej ' + fullName + ',');
+    },
     writeArticle() {
-      fetch('http://localhost:3000/article/new', {
+      fetch('/api/article/new', {
         body: JSON.stringify({
         title: this.title,
         tags: null,

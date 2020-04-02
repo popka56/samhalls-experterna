@@ -211,8 +211,8 @@ app.put('/users/edit/:username', (request, response) => {
 //Ändra profilvärden baserat på användarnamnet
 app.put('/profile/edit/:username', (request, response) => {
     console.log(request.body)
-    database.run('update users set profileName=?, profileDescription=?, profilePicture=?, profileMerits=? where username=?', 
-    [request.body.profileName, request.body.profileDescription, request.body.profilePicture, request.body.profileMerits, request.params.username])
+    database.run('update users set profileName=?, profileDescription=?, profilePicture=?, profileMerits=?, profileJob?, ProfileEducation? where username=?', 
+    [request.body.profileName, request.body.profileDescription, request.body.profilePicture, request.body.profileMerits, request.body.profileJob, request.body.profileEducation, request.params.username])
     .then(() => {
         response.send('Du uppdaterade en användare!');
     })
@@ -265,53 +265,56 @@ app.delete('/article/delete/:articleId', (request, response) => {
 
 //=== Inloggning ===
 
-// Logga in 
-app.get('/secret', (request, response) => {
-    database.all(
-        'SELECT * FROM sessions WHERE token = ?',
-        [request.get('Cookie').split('=')[1]]
-    )
-        .then(sessions => {
-        if (sessions.length === 1) {
-        response.send('Hej ' + sessions[0].username)
+// Funktion för att se om användaren är inloggad
+function authenticate(request, response, next) {
+  const cookie = request.get('Cookie')
+  if (cookie) {
+    database.all('SELECT username FROM sessions WHERE token=?', /token=([0-9a-f-]*)/.exec(cookie)[1])
+      .then(rows => {
+        if (rows.length === 1) {
+          request.username = rows[0].username
+          next()
         } else {
-        response.status(401).send('Access denied!')
+          response.status(401).send()
         }
-    })
-})
+      })
+  } else {
+    response.status(401).send()
+  }
+}
 
+// Logga ut
 app.delete('/logout', (request, response) => {
     database.run(
         'DELETE FROM sessions WHERE token = ?;',
         [request.get('Cookie').split('=')[1]])
     .then(() => {
-        response.send('Du har loggats ut');
+        response.send(null);
     })
 })
-  
+// Logga in, behöver användarnamn och lösenord
 app.post('/login', (request, response) => {
-const hash = crypto.createHash('sha256')
-hash.update(request.body.password)
+    const hash = crypto.createHash('sha256')
+    hash.update(request.body.password)
+    database.all(
+        'SELECT * FROM users WHERE username = ? AND password = ?',
+        [request.body.username, hash.digest('hex')]
+    )
+        .then(users => {
+        if (users.length === 0) {
+            response.status(401).send('hej')
+        } else {
+            const token = uuid()
 
-database.all(
-    'SELECT * FROM users WHERE username = ? AND password = ?',
-    [request.body.username, hash.digest('hex')]
-)
-    .then(users => {
-    if (users.length === 0) {
-        response.status(401).send()
-    } else {
-        const token = uuid()
-
-        database.run(
-        'INSERT INTO sessions VALUES (?, ?)',
-        [request.body.username, token]
-        )
-        .then(() => {
-            response.set('Set-Cookie', 'token=' + token)
-            response.send(`Du har loggat in!`)
-        })
-    }
+            database.run(
+            'INSERT INTO sessions VALUES (?, ?)',
+            [request.body.username, token]
+            )
+            .then(() => {
+                response.set('Set-Cookie', 'token=' + token + '; Path=/')
+                response.send({sucess: `Du har loggat in!`})
+            })
+        }
     })
 })
 // Registrera nya användare, behöver användarnamn, lösenord och e-post
@@ -330,7 +333,10 @@ app.post('/register', (request, response) => {
         response.status(409).send();
     })
 })
-
+//Kolla fall en användare är inloggad
+app.get('/auth', authenticate, (request, response) => {
+    response.send({requestUserName: request.username})
+})
 
 //Ta bort artiklar baserat på artikelns författare
 app.delete('/article/delete/all/:author', (request, response) => {
