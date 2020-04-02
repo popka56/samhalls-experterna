@@ -4,12 +4,40 @@ const cors = require('cors');
 const sqlite = require('sqlite');
 const moment = require('moment');
 const uuid = require('uuid/v4')
+const multer = require('multer')
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-//Egna värden att använda till våra anrop
+//===Egna värden att använda till våra anrop===
+
+//===Filuppladdning Start===
+//Bestämmer vilka filformat vi accepterar vid filuppladdning
+const fileFilter = function(request, file, callback){
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+
+    if(!allowedTypes.includes(file.mimetype)){
+        const error = new Error('Fel filändelse');
+        error.code = 'LIMIT_FILE_TYPES';
+        return callback(error, false)
+    }
+
+    callback(null, true)
+}
+//Multer väljer en mapp där vi lägger filer uppladdade av användare, samt hämtar krav för filen
+const upload = multer({ storage: multer.diskStorage({
+        destination: '../frontend/public/img', //Vart filen sparas
+        filename: (req, file, cb) => { 
+            cb(null, Date.now() + "-" + file.originalname); //Vad filnamnet blir när den läggs i mappen
+        },
+        fileFilter,
+        limits: {
+            fileSize: 500000 //Filer får inte överstiga 500kb
+        }
+    })
+})
+//===Filuppladdning Slut===
 
 //Formatera moment att vara svensk
 moment.locale('sv');
@@ -138,8 +166,8 @@ app.get('/article/popularity/author/:author', (request, response) => {
 
 //Skapar nya artiklar, behöver värden för titel, content, datum, författare (användarens namn), en summary och ett profession
 app.post('/article/new', (request, response) => {
-    database.run('insert into article (title, content, dateCreated, author, summary, profession) values (?, ?, ?, ?, ?, ?)', 
-    [request.body.title, request.body.content, currentDate, request.body.author, request.body.summary, request.body.profession])
+    database.run('insert into article (title, content, dateCreated, author, authorPicture, summary, profession) values (?, ?, ?, ?, ?, ?, ?)', 
+    [request.body.title, request.body.content, currentDate, request.body.author, request.body.authorPicture, request.body.summary, request.body.profession])
     .then(() => {
         response.send('Ett nytt inlägg har skapats!');
     })
@@ -149,6 +177,27 @@ app.post('/article/new', (request, response) => {
 })
 
 //===PUT anrop===
+
+
+//===Filuppladdning Start===
+//Ladda upp en fil till servern för granskning
+app.put('/upload/verification/:username', upload.single('file'), (request, response) => {
+    database.run('UPDATE users SET userHasUploadedVerification=?, userUploadedFile=?  where username=?', 
+    [1, request.file.filename, request.params.username])
+    .then(() => {
+        response.json({ file: request.file });
+    })
+})
+
+//Ladda upp en profilbild
+app.put('/upload/profilePicture/:username', upload.single('file'), (request, response) => {
+    database.run('UPDATE users SET profilePicture=? where username=?', 
+    [request.file.filename, request.params.username])
+    .then(() => {
+        response.json({ file: request.file });
+    })
+})
+//===Filuppladdning Slut===
 
 //Ändra användarens e-mail och lösenord baserat på användarnamn
 app.put('/users/edit/:username', (request, response) => {

@@ -33,7 +33,7 @@
       <!--Loop för artiklar här!-->
       <div id="article" class="d-flex flex-row" v-for="article in articlesByDate" :key="article.articleId">
         <div>
-          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
+          <img :src='"/img/" + article.authorPicture' style="width: 100px; height: 100px; padding: 10px;">
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
@@ -54,7 +54,7 @@
       <!--Loop för artiklar här!-->
       <div id="article" class="d-flex flex-row" v-for="article in articlesByPopularity" :key="article.articleId">
         <div>
-          <img src="https://picsum.photos/200/300" style="width: 100px; height: 100px; padding: 10px;"> <!--TODO: Bilden måste vara författarens icon--> 
+          <img :src='"/img/" + article.authorPicture' style="width: 100px; height: 100px; padding: 10px;">
         </div>
         <div>
           <h2 style="font-size: 20px;"><router-link :to='"/artikel/" + article.articleId'>{{ article.title }}</router-link></h2>
