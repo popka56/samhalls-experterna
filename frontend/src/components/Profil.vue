@@ -10,7 +10,7 @@
             
             <div class="d-md-none d-lg-none">
               <div class="d-flex justify-content-center">
-                <a href="https://placeholder.com"><img class="img-thumbnail rounded-circle" id="profile-img" src="https://www.gamereactor.se/media/forum/se/15294984_18.jpg"></a>
+                <a href="https://placeholder.com"><img class="img-thumbnail rounded-circle" id="profile-img" :src='"/img/" + profile[0].profilePicture'></a>
               </div>
             </div>
           </div >

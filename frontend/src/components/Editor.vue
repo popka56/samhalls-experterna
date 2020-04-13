@@ -38,11 +38,31 @@ export default {
     },
     mounted() {
       this.$store.dispatch('getAuthenticator')
-    },  
+    },
     methods: {
+      // writeArticle() {
+      // fetch('/api/article/new', {
+      //   body: JSON.stringify({
+      //   title: this.title,
+      //   tags: null,
+      //   content: this.content,
+      //   references: null,
+      //   author: this.$route.params.user,
+      //   dateCreated: null,
+      //   dateEdited: null,
+      //   summary: this.summary,
+      //   articleId: null,
+      //   profession: this.profession,
+      //   clicks: null
+      // }),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   method: 'POST'
+      // }),
     editProfile(){
       console.log(this.$route.params.username)
-      fetch('/api/profile/edit/' + this.$route.params.username, {
+      fetch('/api/profile/edit/' + this.isLoggedIn.requestUserName, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -54,11 +74,11 @@ export default {
         profileMerits: this.profileMerits,
         profileEducation: this.profileEducation,
         profileJob: this.profileJob,
-        }),
+        })
       })
-      .then((response) => response.json())
+      
       //Ladda om sidan när funktionen gått igenom
-      // window.location.reload();
+      window.location.reload();
     }
   }
 }
