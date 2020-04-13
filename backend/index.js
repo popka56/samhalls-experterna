@@ -198,10 +198,11 @@ app.put('/users/edit/:username', (request, response) => {
 //Ändra profilvärden baserat på användarnamnet
 app.put('/profile/edit/:username', (request, response) => {
     console.log(request.body)
-    database.run('update users set profileName=?, profileDescription=?, profilePicture=?, profileMerits=?, profileJob?, ProfileEducation? where username=?', 
+    database.run('UPDATE users SET profileName=?, profileDescription=?, profilePicture=?, profileMerits=?, profileJob?, ProfileEducation? WHERE username=?', 
     [request.body.profileName, request.body.profileDescription, request.body.profilePicture, request.body.profileMerits, request.body.profileJob, request.body.profileEducation, request.params.username])
     .then(() => {
-        response.send('Du uppdaterade en användare!');
+        console.log('hej')
+        response.send({sucess: 'Du uppdaterade en användare!'});
     })
 })
 
